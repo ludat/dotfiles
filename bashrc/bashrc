@@ -30,6 +30,12 @@ bind space:magic-space
 # . "$HOME/.shrc"
 # fi
 
+# List directory contents
+alias ls='ls --color=auto'
+alias l='ls -lAh'
+alias ll='ls -lh'
+alias la='ls -Ah'
+
 if [ -f "/etc/bash_completion" ]; then
 . "/etc/bash_completion"
 fi
