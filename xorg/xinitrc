@@ -4,6 +4,10 @@
 #
 # Executed by startx (run your window manager from here)
 
+set -e
+set -v
+set -u
+
 if [ -d /etc/X11/xinit/xinitrc.d ]; then
   for f in /etc/X11/xinit/xinitrc.d/*; do
     [ -x "$f" ] && . "$f"
@@ -18,7 +22,13 @@ fi
 # Map caps lock to ctrl
 setxkbmap -option ctrl:nocaps
 
-session=${1:-xmonad}
+# Start ssh-agent and add my keys
+# export SSH_ASKPASS
+export SSH_ASKPASS=/usr/lib/seahorse/seahorse-ssh-askpass
+eval $(ssh-agent)
+[ -e ~/.ssh/id_rsa ] && ssh-add -c ~/.ssh/id_rsa
+[ -e ~/.ssh/anypoint.mulesoft.com.key ] && ssh-add ~/.ssh/anypoint.mulesoft.com.key
+
 case $session in
     xmonad)
         # Turn off Touchpad
@@ -37,9 +47,9 @@ case $session in
         # Set the cursor
         xsetroot -cursor_name left_ptr
         # Set Spanish keyboard layout
-        setxkbmap -layout es
+        setxkbmap -layout us
         # Set wallpaper
-        feh --bg-fill $HOME/Pictures/Wallpapers/TinyGalaxy.jpg
+        feh --bg-fill $HOME/Pictures/Wallpapers/current
         # Start notification server (dunst)
         dunst &
         # Start status bar engine
@@ -52,6 +62,7 @@ case $session in
         #nc -k -l -U ${HOME}/.xmonad/log.soc | dzen2 -ta l -bg '#161616' -fn 'Terminus:size=8' -w 600 -e '' -dock &
         # Actually start xmonad
         exec xmonad ;;
+    i3) exec i3 ;;
     gnome) exec gnome-session ;;
     kde) exec startkde ;;
     mate) exec mate-session ;;
