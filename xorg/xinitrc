@@ -29,6 +29,7 @@ eval $(ssh-agent)
 [ -e ~/.ssh/id_rsa ] && ssh-add -c ~/.ssh/id_rsa
 [ -e ~/.ssh/anypoint.mulesoft.com.key ] && ssh-add ~/.ssh/anypoint.mulesoft.com.key
 
+session=${1:-i3}
 case $session in
     xmonad)
         # Turn off Touchpad
