@@ -61,6 +61,9 @@ case "$extension" in
     # BitTorrent Files
     torrent)
         try transmission-show "$path" && { dump | trim; exit 5; } || exit 1;;
+    # json Files
+    json)
+        try jq '.' "$path" --color-output && { dump | trim; exit 0; } || exit 2;;
     # HTML Pages:
     htm|html|xhtml)
         try w3m    -dump "$path" && { dump | trim | fmt -s -w $width; exit 4; }
