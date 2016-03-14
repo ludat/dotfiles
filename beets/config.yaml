@@ -1,0 +1,3 @@
+directory: ~/Music
+library: ~/.data/beets/musiclibrary.blb
+plugins: web missing duplicates
