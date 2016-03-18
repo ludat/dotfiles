@@ -19,6 +19,7 @@
 	untracked = red
 [merge]
 	tool = vimdiff
+	conflictstyle = diff3
 [user]
 	email = lucas6246@gmail.com
 	name = Lucas David Traverso
