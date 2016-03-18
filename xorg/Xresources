@@ -55,16 +55,24 @@ xscreensaver.passwd.passwdFont:         -*-dina-bold-r-*-*-12-*-*-*-*-*-*-*
 *color15:  #eeeeec
 ! }}}
 ! URxvt settings {{{
-URxvt*urgentOnBell    : true
-URxvt*font            : xft:Terminess Powerline:style=Regular:size=12
-URxvt*perl-ext-common : default,matcher,-option-popup,-selection-popup,-realine
-URxvt*urlLauncher     : chromium
-urxvt*internalBorder  : 0
-urxvt*externalBorder  : 0
-URxvt*scrollBar       : false
-URxvt*saveLines       : 0
-urxvt*shading         : 35
-urxvt*transparent     : true
+URxvt.urgentOnBell: true
+URxvt.font: xft:Terminess Powerline:style=Regular:size=12
+URxvt.perl-ext-common: default,matcher,resize-font,option-popup,selection-popup,readline
+! Dynamic bigger and smaller fonts
+URxvt.resize-font.smaller: Meta-minus
+URxvt.resize-font.bigger: Meta-plus
+URxvt.resize-font.reset: Meta-equal
+URxvt.resize-font.show: Meta-question
+! Disable pop up on Ctrl+Shift
+URxvt.iso14755: false
+URxvt.iso14755_52: false 
+URxvt.urlLauncher: firefox-aurora
+URxvt.internalBorder: 0
+URxvt.externalBorder: 0
+URxvt.scrollBar: false
+URxvt.saveLines: 0
+URxvt.shading: 35
+URxvt.transparent: true
 ! }}}
 ! Xft settings {{{
 Xft.dpi       : 96
