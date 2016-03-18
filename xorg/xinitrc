@@ -21,6 +21,8 @@ fi
 
 # Map caps lock to ctrl
 setxkbmap -option ctrl:nocaps
+# Set awesome english keyboard layout
+setxkbmap -layout us altgr-intl
 
 # Start ssh-agent and add my keys
 # export SSH_ASKPASS
@@ -28,6 +30,8 @@ export SSH_ASKPASS=/usr/lib/seahorse/seahorse-ssh-askpass
 eval $(ssh-agent)
 [ -e ~/.ssh/id_rsa ] && ssh-add -c ~/.ssh/id_rsa
 [ -e ~/.ssh/anypoint.mulesoft.com.key ] && ssh-add ~/.ssh/anypoint.mulesoft.com.key
+[ -e ~/.ssh/vpn/exchange-platform-dev.pem ] && ssh-add ~/.ssh/vpn/exchange-platform-dev.pem
+[ -e ~/.ssh/vpn/exchange-platform-qa.pem ] && ssh-add ~/.ssh/vpn/exchange-platform-qa.pem
 
 session=${1:-i3}
 case $session in
@@ -47,8 +51,6 @@ case $session in
 
         # Set the cursor
         xsetroot -cursor_name left_ptr
-        # Set Spanish keyboard layout
-        setxkbmap -layout us
         # Set wallpaper
         feh --bg-fill $HOME/Pictures/Wallpapers/current
         # Start notification server (dunst)
