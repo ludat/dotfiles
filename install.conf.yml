@@ -1,0 +1,15 @@
+link:
+    ~/.tmux.conf: tmux/tmux.conf
+    ~/.tmux: tmux/tmux
+    ~/.config/git: git/
+    ~/.bashrc: bashrc/bashrc
+    ~/.config/ranger: ranger/
+    ~/.config/easystroke: easystroke/
+    ~/.Xresources: xorg/Xresources
+    ~/.xinitrc: xorg/xinitrc
+    ~/.zprofile: xorg/zprofile
+    ~/.config/htop/htoprc: htoprc
+    ~/.config/mpd: mpd/
+    ~/.config/beets: beets
+    ~/.makepkg.conf: makepkg.conf
+    ~/.config/dunstrc: dunstrc
