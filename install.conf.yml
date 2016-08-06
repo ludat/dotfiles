@@ -13,3 +13,4 @@ link:
     ~/.config/beets: beets
     ~/.makepkg.conf: makepkg.conf
     ~/.config/dunstrc: dunstrc
+    ~/.weechat: weechat/
