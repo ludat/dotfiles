@@ -17,6 +17,9 @@ auto-save-list
 tramp
 .\#*
 # }}}
+# IntelliJ {{{
+.idea
+# }}}
 # }}}
 # Other Applications {{{
 # vagrant {{{
