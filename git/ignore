@@ -8,6 +8,7 @@ Session.vim
 *~
 # }}}
 # Emacs {{{
+.projectile
 *~
 \#*\#
 /.emacs.desktop
@@ -19,6 +20,7 @@ tramp
 # }}}
 # IntelliJ {{{
 .idea
+*.iml
 # }}}
 # }}}
 # Other Applications {{{
@@ -72,6 +74,9 @@ cabal.sandbox.config
 *.jar
 *.war
 *.ear
+# }}}
+# Ruby {{{
+.byebug_history
 # }}}
 # }}}
 # Binary files and os garbage {{{
