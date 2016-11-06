@@ -18,7 +18,7 @@
 	changed = yellow
 	untracked = red
 [merge]
-	tool = vimdiff
+	tool = meld
 	conflictstyle = diff3
 [user]
 	email = lucas6246@gmail.com
