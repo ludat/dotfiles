@@ -8,6 +8,7 @@ Session.vim
 *~
 # }}}
 # Emacs {{{
+.dir-locals.el
 .projectile
 *~
 \#*\#
