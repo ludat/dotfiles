@@ -20,6 +20,7 @@
 [merge]
 	tool = meld
 	conflictstyle = diff3
+	keepbackup = true
 [user]
 	email = lucas6246@gmail.com
 	name = Lucas David Traverso
@@ -27,7 +28,7 @@
 	default = current
 [cola]
 	tabwidth = 4
-	fontdiff = Terminess Powerline,12,-1,5,50,0,0,0,0,0
+	fontdiff = Monospace,10,-1,5,50,0,0,0,0,0
 [credential]
 	helper = cache --timeout=3600
 [alias]
@@ -38,5 +39,7 @@
 	lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
 [diff]
 	tool = meld
+[gui]
+	editor = gedit
 [url "https://aur.archlinux.org/"]
 	insteadOf = aur://
