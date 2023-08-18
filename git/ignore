@@ -27,6 +27,7 @@ tramp
 # Other Applications {{{
 # vagrant {{{
 .vagrant/
+.envrc
 # }}}
 # }}}
 # Languages {{{
@@ -98,10 +99,11 @@ cabal.sandbox.config
 *.rar
 *.tar
 *.zip
+/vendor/bundle
 # }}}
 # Logs and databases {{{
 *.log
-*.sql
+# *.sql
 *.sqlite
 # }}}
 # OS generated files {{{
