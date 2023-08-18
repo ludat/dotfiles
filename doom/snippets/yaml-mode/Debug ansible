@@ -1,0 +1,8 @@
+# -*- mode: snippet -*-
+# name: Debug ansible
+# key: ansible-debug
+# --
+
+- name: debug
+  debug:
+    var: "$1"

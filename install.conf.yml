@@ -7,6 +7,8 @@
     ~/:
     ~/.config:
       recursive: true
+
+##### nvim
 - link:
     ~/.config/nvim:
 - shell:
@@ -16,3 +18,21 @@
     else
       echo plug.vim already exists;
     fi
+
+##### zsh
+- link:
+    ~/.zshrc: zsh/zshrc
+- shell:
+  - |-
+    set -x
+    set -euo pipefail
+    ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
+    if [ ! -d $ZINIT_HOME ]; then mkdir -p "$(dirname $ZINIT_HOME)"; fi
+    if [ ! -d $ZINIT_HOME/.git ]; then git clone https://github.com/zdharma-continuum/zinit.git "$ZINIT_HOME"; fi
+
+##### doom emacs
+- link:
+    ~/.doom.d: doom
+- shell:
+  - |-
+    if [ ! -d ~/.config/emacs ]; then git clone --depth 1 https://github.com/doomemacs/doomemacs ~/.config/emacs; fi
