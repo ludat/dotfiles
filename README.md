@@ -1,3 +1,3 @@
 # My personal dotfiles
 
-I install them using [dottle](https://github.com/ludat/dottle)
+I install them using [dotbot](https://github.com/anishathalye/dotbot)
