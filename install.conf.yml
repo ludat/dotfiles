@@ -59,6 +59,6 @@
       force: true
     ~/.makepkg.conf:
     ~/.local/bin:
-    ~/.stack/hooks/ghc-install.sh: stack/hooks/ghc-install.sh
+    ~/.stack/hooks: stack/hooks
     ~/.stack/global-project: stack/global-project
 
