@@ -63,4 +63,5 @@
     ~/.local/bin:
     ~/.stack/hooks: stack/hooks
     ~/.stack/global-project: stack/global-project
+    ~/.bundle/config: bundler/config
 
