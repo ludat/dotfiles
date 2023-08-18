@@ -54,7 +54,9 @@
     ~/.config/ranger:
     ~/.config/git:
     ~/.config/i3:
-    ~/.makepkg.conf:
     ~/.config/ripgreprc:
+    ~/.config/atuin:
+      force: true
+    ~/.makepkg.conf:
     ~/.local/bin:
 
