@@ -1,0 +1,11 @@
+#!/bin/bash
+
+set -euo pipefail
+
+dir="$(realpath "$1")"
+
+if [ ! -d "$dir" ]; then
+    mkdir "$dir"
+fi
+
+sudo mount -t tmpfs -o "uid=$(id -u),gid=$(id -g)" "temporal-$RANDOM" "$dir"

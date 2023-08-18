@@ -48,8 +48,10 @@
 
 ##### the rest
 - link:
-    ~/.config/ranger: ranger
-    ~/.config/git: git
-    ~/.config/i3: i3
-    ~/.makepkg.conf: makepkg.conf
+    ~/.config/ranger:
+    ~/.config/git:
+    ~/.config/i3:
+    ~/.makepkg.conf:
+    ~/.config/ripgreprc:
+    ~/.local/bin:
 

@@ -1,0 +1,6 @@
+#!/bin/bash
+
+set -euo pipefail
+set -x
+
+sudo unbound-control flush_zone ${1:-.}

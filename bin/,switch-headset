@@ -1,0 +1,35 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+set -x
+
+notification_id=$(cat /tmp/headset-notification-id.txt || echo 0)
+notify () {
+    notification_id="$(dunstify --printid --replace=$notification_id "$@")"
+    echo $notification_id > /tmp/headset-notification-id.txt
+}
+
+DEVICE_NAME=bluez_card.D0_8A_55_FD_FB_6F
+SONIDO_CHOTO_BUENA_VOZ=headset-head-unit
+BUEN_SONIDO_SIN_VOZ=a2dp-sink-sbc
+
+profile=$(pw-dump | jq -r 'map(select(.info.props["device.name"] == "'"$DEVICE_NAME"'")) | .[0].info.params.Profile[0].name')
+
+if [ "$profile" = "$BUEN_SONIDO_SIN_VOZ" ]; then
+    new_profile=$SONIDO_CHOTO_BUENA_VOZ
+else
+    new_profile=$BUEN_SONIDO_SIN_VOZ
+fi
+
+if pactl set-card-profile "$DEVICE_NAME" "$new_profile"; then
+    notify -i audio-headphones "Cambiado perfil" "Nuevo perfil es $new_profile"
+else
+    notify -i dialog-error "Auris malosos" "Reiniciando auris"
+    bluetoothctl disconnect D0:8A:55:FD:FB:6F
+    bluetoothctl connect D0:8A:55:FD:FB:6F
+    if pactl set-card-profile "$DEVICE_NAME" "$new_profile"; then
+        notify -i audio-headphones "Reconnectados auris" "Perfil es $new_profile"
+    else
+        notify -i dialog-error "Auris malosos 2" "Ni idea donde estan los auris"
+    fi
+fi

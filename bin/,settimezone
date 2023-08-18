@@ -1,0 +1,14 @@
+#!/bin/bash
+
+set -euo pipefail
+
+# set -x
+
+NEW_TIMEZONE=$(curl --silent https://freegeoip.app/json/ | jq -r .time_zone)
+
+echo "Timezone will be setted to $NEW_TIMEZONE ... Ctrl+c to cancel"
+read
+
+set -x
+sudo timedatectl set-timezone "$NEW_TIMEZONE"
+set +x
