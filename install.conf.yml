@@ -53,3 +53,7 @@
 ##### ranger
 - link:
     ~/.config/ranger: ranger
+
+##### git
+- link:
+    ~/.config/git: git
