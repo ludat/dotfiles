@@ -35,3 +35,7 @@
 - shell:
   - |-
     if [ ! -d ~/.config/emacs ]; then git clone --depth 1 https://github.com/doomemacs/doomemacs ~/.config/emacs; fi
+
+##### i3
+- link:
+    ~/.config/i3: i3
