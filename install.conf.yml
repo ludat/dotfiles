@@ -38,10 +38,6 @@
   - |-
     if [ ! -d ~/.config/emacs ]; then git clone --depth 1 https://github.com/doomemacs/doomemacs ~/.config/emacs; fi
 
-##### i3
-- link:
-    ~/.config/i3: i3
-
 ##### tmux
 - link:
     ~/.tmux.conf: tmux/tmux.conf
@@ -50,10 +46,10 @@
   - |-
     if [ ! -d tmux/tmux/plugins/tpm ]; then git clone https://github.com/tmux-plugins/tpm tmux/tmux/plugins/tpm; fi
 
-##### ranger
+##### the rest
 - link:
     ~/.config/ranger: ranger
-
-##### git
-- link:
     ~/.config/git: git
+    ~/.config/i3: i3
+    ~/.makepkg.conf: makepkg.conf
+
