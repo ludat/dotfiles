@@ -35,7 +35,7 @@
        (emoji +unicode +github +ascii)  ; 🙂
        hl-todo           ; highlight TODO/FIXME/NOTE/DEPRECATED/HACK/REVIEW
        ;;hydra
-       ;;indent-guides     ; highlighted indent columns
+       indent-guides     ; highlighted indent columns
        ;; (ligatures +fira)         ; ligatures and symbols to make your code pretty again
        minimap           ; show a map of the code on the side
        modeline          ; snazzy, Atom-inspired modeline, plus API
@@ -56,7 +56,7 @@
        (evil +everywhere); come to the dark side, we have cookies
        file-templates    ; auto-snippets for empty files
        fold              ; (nigh) universal code folding
-       (format +onsave)  ; automated prettiness
+       format  ; automated prettiness
        ;;god               ; run Emacs commands without modifier keys
        ;;lispy             ; vim for lisp, for people who don't like vim
        multiple-cursors  ; editing in many places at once
@@ -87,6 +87,7 @@
        :tools
        ;;ansible
        ;;biblio            ; Writes a PhD for you (citation needed)
+       ;;collab            ; buffers with friends
        ;;debugger          ; FIXME stepping through code, to help you add bugs
        direnv
        docker
@@ -122,7 +123,7 @@
        ;;crystal           ; ruby at the speed of c
        ;;csharp            ; unity, .NET, and mono shenanigans
        data              ; config/data formats
-       dart   ; paint ui and not much else
+       ;;dart   ; paint ui and not much else
        ;;dhall
        elixir            ; erlang done right
        ;;elm               ; care for a cup of TEA?
@@ -161,7 +162,7 @@
        ;;qt                ; the 'cutest' gui framework ever
        ;;racket            ; a DSL for DSLs
        ;;raku              ; the artist formerly known as perl6
-       ;;(rest +jq)              ; Emacs as a REST client
+       (rest +jq)              ; Emacs as a REST client
        ;;rst               ; ReST in peace
        (ruby +rails)     ; 1.step {|i| p "Ruby is #{i.even? ? 'love' : 'life'}"}
        (rust +lsp)       ; Fe2O3.unwrap().unwrap().unwrap().unwrap()
