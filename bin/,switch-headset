@@ -9,7 +9,8 @@ notify () {
     echo $notification_id > /tmp/headset-notification-id.txt
 }
 
-DEVICE_NAME=bluez_card.D0_8A_55_FD_FB_6F
+DEVICE_ID=C0:EA:C3:1A:D9:83
+DEVICE_NAME=bluez_card.C0_EA_C3_1A_D9_83
 SONIDO_CHOTO_BUENA_VOZ=headset-head-unit
 BUEN_SONIDO_SIN_VOZ=a2dp-sink-sbc
 
@@ -25,8 +26,8 @@ if pactl set-card-profile "$DEVICE_NAME" "$new_profile"; then
     notify -i audio-headphones "Cambiado perfil" "Nuevo perfil es $new_profile"
 else
     notify -i dialog-error "Auris malosos" "Reiniciando auris"
-    bluetoothctl disconnect D0:8A:55:FD:FB:6F
-    bluetoothctl connect D0:8A:55:FD:FB:6F
+    bluetoothctl disconnect "$DEVICE_ID"
+    bluetoothctl connect "$DEVICE_ID"
     if pactl set-card-profile "$DEVICE_NAME" "$new_profile"; then
         notify -i audio-headphones "Reconnectados auris" "Perfil es $new_profile"
     else
