@@ -147,6 +147,11 @@
     xsel
   ];
 
+  environment.variables = {
+    EDITOR = "nvim";
+    VISUAL = "nvim";
+  };
+
   console.useXkbConfig = true;
 
   # Some programs need SUID wrappers, can be configured further or are
@@ -159,7 +164,6 @@
   programs.steam.enable = true;
   programs.zsh.enable = true;
   #fonts.fontDir.enable = true;
-  programs.neovim.defaultEditor = true;
 
   # List services that you want to enable:
 
