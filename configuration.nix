@@ -159,6 +159,7 @@
   programs.steam.enable = true;
   programs.zsh.enable = true;
   #fonts.fontDir.enable = true;
+  programs.neovim.defaultEditor = true;
 
   # List services that you want to enable:
 
