@@ -115,7 +115,7 @@
     isNormalUser = true;
     shell = pkgs.zsh;
     description = "Lucas David Traverso";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [ "networkmanager" "wheel" "docker" ];
     packages = with pkgs; [
     #  thunderbird
     ];
@@ -152,6 +152,18 @@
     git-cola
     xsel
     arandr
+    slack
+    trippy
+    htop
+    stack
+    postgresql
+    zlib.dev
+    just
+    ghcid
+    docker-compose
+    nodejs
+    yarn
+    kitty
   ];
 
   environment.variables = {
@@ -170,6 +182,7 @@
   # };
   programs.steam.enable = true;
   programs.zsh.enable = true;
+  virtualisation.docker.enable = true;
   #fonts.fontDir.enable = true;
 
   # List services that you want to enable:
