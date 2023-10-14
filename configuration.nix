@@ -73,7 +73,12 @@
   };
 
   # Enable the XFCE Desktop Environment.
-  services.xserver.desktopManager.xfce.enable = true;
+  services.xserver.desktopManager.xfce = {
+    enable = true;
+    # noDesktop = true;
+    enableXfwm = false;
+  };
+  services.xserver.windowManager.i3.enable = true;
 
   # Configure keymap in X11
   services.xserver = {
@@ -90,6 +95,7 @@
   security.rtkit.enable = true;
   services.pipewire = {
     enable = true;
+    audio.enable = true;
     alsa.enable = true;
     alsa.support32Bit = true;
     pulse.enable = true;
@@ -145,6 +151,7 @@
     nerdfonts
     git-cola
     xsel
+    arandr
   ];
 
   environment.variables = {
