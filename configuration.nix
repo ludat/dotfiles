@@ -144,6 +144,7 @@
     fasd
     nerdfonts
     git-cola
+    xsel
   ];
 
   console.useXkbConfig = true;
