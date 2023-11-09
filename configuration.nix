@@ -164,6 +164,7 @@
     nodejs
     yarn
     kitty
+    vscode
   ];
 
   environment.variables = {
