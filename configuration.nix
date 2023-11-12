@@ -27,6 +27,8 @@
   # Enable networking
   networking.networkmanager.enable = true;
 
+  hardware.bluetooth.enable = true; # enables support for Bluetooth
+  hardware.bluetooth.powerOnBoot = true; # powers up the default Bluetooth controller on boot
   # Set your time zone.
   time.timeZone = "America/Argentina/Buenos_Aires";
 
@@ -79,6 +81,8 @@
     enableXfwm = false;
   };
   services.xserver.windowManager.i3.enable = true;
+  services.xserver.displayManager.sddm.enable = true;
+  services.xserver.desktopManager.plasma5.enable = true;
 
   # Configure keymap in X11
   services.xserver = {
@@ -128,22 +132,25 @@
   # $ nix search wget
   environment.systemPackages = with pkgs; [
     firefox-devedition-bin
+    chromium
     neovim
+    moreutils
+    parallel
     tmux
     ranger
     lshw
     pciutils
     wget
-    ranger
     xorg.xkill
     xfce.xfce4-whiskermenu-plugin
     xfce.xfce4-pulseaudio-plugin
     tmux
     openssh
     git
+    tig
     telegram-desktop
     keepassxc
-    (callPackage ./dotbot.nix {})
+    dotbot
     stack
     zsh
     direnv
@@ -165,6 +172,41 @@
     yarn
     kitty
     vscode
+    jetbrains.webstorm
+    font-awesome
+    xorg.xev
+    libnotify
+    flameshot
+
+    # kubernetes stuff
+    k9s
+    kubectl
+    kubectl-cnpg
+    kubectl-klock
+    kubectl-explore
+    (google-cloud-sdk.withExtraComponents [google-cloud-sdk.components.gke-gcloud-auth-plugin])
+    stern
+    jq
+    yq-go
+    heroku
+    multitail
+    bitwarden
+    meld
+    atuin
+    ripgrep
+    fd
+    emacs29
+    ncdu
+    fira-code-nerdfont
+    terminus-nerdfont
+
+    # kde
+    plasma5Packages.kalk
+    xdotool
+
+    aria
+    mpv
+    spotify
   ];
 
   environment.variables = {
