@@ -179,7 +179,6 @@
     font-awesome
     xorg.xev
     libnotify
-    flameshot
 
     # kubernetes stuff
     k9s
