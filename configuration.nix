@@ -173,6 +173,9 @@
     kitty
     vscode
     jetbrains.webstorm
+    xh
+    dogdns
+    hurl
     font-awesome
     xorg.xev
     libnotify
