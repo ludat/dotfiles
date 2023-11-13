@@ -175,6 +175,7 @@
     jetbrains.webstorm
     xh
     dogdns
+    unp
     hurl
     font-awesome
     xorg.xev
