@@ -148,6 +148,9 @@
     openssh
     git
     tig
+    delta
+    dyff
+    fx
     telegram-desktop
     keepassxc
     dotbot
