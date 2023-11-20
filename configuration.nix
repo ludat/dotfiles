@@ -134,8 +134,9 @@
     firefox-devedition-bin
     chromium
     neovim
-    moreutils
     parallel
+    moreutils
+    termdown
     tmux
     ranger
     lshw
@@ -177,7 +178,12 @@
     vscode
     jetbrains.webstorm
     xh
+    eza
+    watchexec
     dogdns
+    shellcheck
+    tree
+    up
     unp
     hurl
     font-awesome
@@ -208,6 +214,7 @@
 
     # kde
     plasma5Packages.kalk
+    plasma5Packages.kolourpaint
     xdotool
 
     aria
