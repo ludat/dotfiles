@@ -238,6 +238,7 @@
   # };
   programs.steam.enable = true;
   programs.zsh.enable = true;
+  programs.kdeconnect.enable = true;
   virtualisation.docker.enable = true;
   #fonts.fontDir.enable = true;
 
