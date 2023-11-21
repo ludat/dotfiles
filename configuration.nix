@@ -217,8 +217,10 @@
     plasma5Packages.kolourpaint
     xdotool
 
+    yaml-language-server
     aria
     mpv
+    mlocate
     spotify
   ];
 
