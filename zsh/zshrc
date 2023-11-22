@@ -21,7 +21,6 @@ zinit wait lucid for \
     OMZP::helm \
     OMZP::git \
     OMZP::heroku \
-    OMZP::docker \
     as=completion OMZP::docker-compose
 
 # zinit snippet OMZ::plugins/command-not-found/command-not-found.plugin.zsh
