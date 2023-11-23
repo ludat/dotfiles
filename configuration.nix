@@ -216,6 +216,7 @@
     # kde
     plasma5Packages.kalk
     plasma5Packages.kolourpaint
+    kdenlive
     xdotool
 
     yaml-language-server
