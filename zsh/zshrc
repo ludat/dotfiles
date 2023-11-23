@@ -18,7 +18,6 @@ zinit wait blockf lucid \
 
 zinit wait lucid for \
     OMZP::kubectl \
-    OMZP::helm \
     OMZP::git \
     OMZP::heroku \
     as=completion OMZP::docker-compose

@@ -196,6 +196,7 @@
     kubectl-cnpg
     kubectl-klock
     kubectl-explore
+    kubernetes-helm
     (google-cloud-sdk.withExtraComponents [google-cloud-sdk.components.gke-gcloud-auth-plugin])
     stern
     jq
