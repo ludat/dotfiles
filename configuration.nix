@@ -225,6 +225,7 @@
     mpv
     mlocate
     spotify
+    bcc
   ];
 
   environment.variables = {
