@@ -95,6 +95,7 @@ Plug 'cespare/vim-toml' " Because cargo.toml
 Plug 'wellle/targets.vim' " provide additional text objects
 Plug 'lambdalisue/suda.vim'
 Plug 'hashivim/vim-terraform'
+Plug 'elixir-editors/vim-elixir'
 " Plug 'Yggdroot/indentLine' " Add indent lines with special char
 " Plug 'FredKSchott/CoVim' " Peer programming he he he
 " Plug 'terryma/vim-multiple-cursors' " Multiple cursors support
