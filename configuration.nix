@@ -2,7 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, ... }:
+{ config, pkgs, nixpkgs-stable, ... }:
 
 {
   imports =
@@ -159,7 +159,6 @@
     zsh
     direnv
     fasd
-    nerdfonts
     git-cola
     xsel
     arandr
@@ -209,6 +208,7 @@
     atuin
     ripgrep
     fd
+    # nixpkgs-stable.legacyPackages.x86_64-linux.emacs
     emacs29
     ncdu
     fira-code-nerdfont

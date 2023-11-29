@@ -13,6 +13,7 @@
 
     # Official NixOS package source, using nixos-unstable branch here
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+    nixpkgs-stable.url = "github:NixOS/nixpkgs/nixos-23.11";
   };
 
   # `outputs` are all the build result of the flake.
@@ -25,7 +26,7 @@
   # 
   # The `@` syntax here is used to alias the attribute set of the
   # inputs's parameter, making it convenient to use inside the function.
-  outputs = { self, nixpkgs, ... }@inputs: {
+  outputs = { self, nixpkgs, nixpkgs-stable, ... }@inputs: {
     nixosConfigurations = {
       # By default, NixOS will try to refer the nixosConfiguration with
       # its hostname, so the system named `nixos-test` will use this one.
@@ -79,7 +80,7 @@
         # `specialArgs`. 
         # you must use `specialArgs` by uncomment the following line:
         #
-        # specialArgs = {...};  # pass custom arguments into all sub module.
+        specialArgs = { inherit nixpkgs-stable; };  # pass custom arguments into all sub module.
         modules = [
           # Import the configuration.nix here, so that the
           # old configuration file can still take effect.
