@@ -65,3 +65,4 @@
     ~/.stack/global-project: stack/global-project
     ~/.bundle/config: bundler/config
     ~/.config/direnv:
+    ~/.config/kitty:
