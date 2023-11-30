@@ -28,6 +28,7 @@ tramp
 # vagrant {{{
 .vagrant/
 .envrc
+.direnv
 # }}}
 # }}}
 # Languages {{{
