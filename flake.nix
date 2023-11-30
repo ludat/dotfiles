@@ -1,5 +1,5 @@
 {
-  description = "Ryan's NixOS Flake";
+  description = "ludat's NixOS Flake";
 
   # This is the standard format for flake.nix.
   # `inputs` are the dependencies of the flake,
@@ -80,7 +80,7 @@
         # `specialArgs`. 
         # you must use `specialArgs` by uncomment the following line:
         #
-        specialArgs = { inherit nixpkgs-stable; };  # pass custom arguments into all sub module.
+        specialArgs = { inherit inputs; };  # pass custom arguments into all sub module.
         modules = [
           # Import the configuration.nix here, so that the
           # old configuration file can still take effect.

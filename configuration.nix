@@ -2,16 +2,23 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, nixpkgs-stable, ... }:
+{ config, pkgs, inputs, ... }:
 
 {
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
     ];
-  nix.extraOptions = ''
-    experimental-features = nix-command flakes
-  '';
+  nix = {
+    extraOptions = ''
+      experimental-features = nix-command flakes repl-flake
+    '';
+    # since I'm using flakes I don't want channels instead I want nixpkgs to follow
+    # my flake's nixpkgs
+    channel.enable = false;
+    # https://github.com/NixOS/nix/issues/3803#issuecomment-1181667475
+    nixPath = [ "nixpkgs=${inputs.nixpkgs}" ];
+  };
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
@@ -199,6 +206,7 @@
     (google-cloud-sdk.withExtraComponents [google-cloud-sdk.components.gke-gcloud-auth-plugin])
     stern
     jq
+    visidata
     bat
     yq-go
     heroku
@@ -213,6 +221,8 @@
     ncdu
     fira-code-nerdfont
     terminus-nerdfont
+    nix-diff
+    nix-tree
 
     # kde
     plasma5Packages.kalk
