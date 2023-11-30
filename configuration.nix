@@ -10,14 +10,14 @@
       ./hardware-configuration.nix
     ];
   nix = {
-    extraOptions = ''
-      experimental-features = nix-command flakes repl-flake
-    '';
     # since I'm using flakes I don't want channels instead I want nixpkgs to follow
     # my flake's nixpkgs
     channel.enable = false;
     # https://github.com/NixOS/nix/issues/3803#issuecomment-1181667475
-    nixPath = [ "nixpkgs=${inputs.nixpkgs}" ];
+    settings = {
+      nix-path = [ "nixpkgs=${inputs.nixpkgs}" ];
+      experimental-features = [ "nix-command" "flakes" "repl-flake" ];
+    };
   };
 
   # Bootloader.
