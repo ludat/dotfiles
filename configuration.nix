@@ -223,6 +223,7 @@
     terminus-nerdfont
     nix-diff
     nix-tree
+    nix-du
 
     # kde
     plasma5Packages.kalk
