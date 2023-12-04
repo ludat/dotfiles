@@ -235,7 +235,6 @@
     yaml-language-server
     aria
     mpv
-    mlocate
     spotify
     bcc
   ];
@@ -271,6 +270,7 @@
     configDir = "/home/ludat/.config/syncthing";
     dataDir = "/home/ludat/Documents";
   };
+  services.locate.enable = true;
   #services.flatpak.enable = true;
   #xdg.portal.enable = true;
   #xdg.portal.wlr.enable = true;
