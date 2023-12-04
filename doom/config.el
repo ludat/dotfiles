@@ -24,7 +24,11 @@
 ;;(setq doom-font (font-spec :family "Fira Code" :size 12 :weight 'semi-light)
 ;;      doom-variable-pitch-font (font-spec :family "Fira Sans" :size 13))
 (setq doom-font (font-spec :family "FiraCode Nerd Font" :size 13))
-;;
+;; Since I want to avoid installing the whole nerdfonts package (which is huge
+;; the generic font with just the icons is not installed so I need to override
+;; that font to avoid emacs from crashing.
+(setq nerd-icons-font-family '("FiraCode Nerd Font"))
+
 ;; If you or Emacs can't find your font, use 'M-x describe-font' to look them
 ;; up, `M-x eval-region' to execute elisp code, and 'M-x doom/reload-font' to
 ;; refresh your font settings. If Emacs still can't find your font, it likely

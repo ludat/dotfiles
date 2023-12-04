@@ -219,9 +219,8 @@
     fd
     # nixpkgs-stable.legacyPackages.x86_64-linux.emacs
     emacs29
+    (nerdfonts.override {fonts = ["FiraCode" "FiraMono" "Terminus"];})
     ncdu
-    fira-code-nerdfont
-    terminus-nerdfont
     nix-diff
     nix-tree
     nix-du
