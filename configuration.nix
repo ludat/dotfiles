@@ -23,7 +23,7 @@
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
-
+  boot.tmp.useTmpfs = true;
   networking.hostName = "republic-ludat"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
@@ -224,6 +224,7 @@
     nix-diff
     nix-tree
     nix-du
+    graphviz
 
     # kde
     plasma5Packages.kalk
