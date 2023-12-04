@@ -144,6 +144,7 @@
     parallel
     moreutils
     termdown
+    file
     tmux
     ranger
     lshw
