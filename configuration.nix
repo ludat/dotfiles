@@ -196,6 +196,7 @@
     font-awesome
     xorg.xev
     libnotify
+    libreoffice
 
     # kubernetes stuff
     k9s
