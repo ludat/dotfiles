@@ -4,7 +4,11 @@
 
 { config, pkgs, inputs, ... }:
 
-{
+let
+  stable-pkgs = import inputs.nixpkgs-stable {
+    system = pkgs.system;
+  };
+in {
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
@@ -212,7 +216,7 @@
     yq-go
     heroku
     multitail
-    bitwarden
+    stable-pkgs.bitwarden
     meld
     atuin
     ripgrep
