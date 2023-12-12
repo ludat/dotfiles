@@ -165,7 +165,6 @@
     dotbot
     stack
     zsh
-    direnv
     fasd
     git-cola
     xsel
@@ -258,6 +257,9 @@
   programs.zsh.enable = true;
   programs.kdeconnect.enable = true;
   programs.firejail.enable = true;
+  programs.direnv = {
+    enable = true;
+  };
   virtualisation.docker.enable = true;
   #fonts.fontDir.enable = true;
 
