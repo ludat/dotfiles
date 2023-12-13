@@ -216,7 +216,7 @@ in {
     yq-go
     heroku
     multitail
-    stable-pkgs.bitwarden
+    bitwarden
     meld
     atuin
     ripgrep
