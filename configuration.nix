@@ -37,6 +37,23 @@ in {
 
   # Enable networking
   networking.networkmanager.enable = true;
+  services.unbound = {
+    enable = true;
+    resolveLocalQueries = true;
+    settings = {
+      server = {
+        interface = [ "127.0.0.1" ];
+      };
+      forward-zone = [
+        {
+          name = ".";
+          forward-addr = "1.1.1.1@853#cloudflare-dns.com";
+          forward-tls-upstream = true;
+        }
+      ];
+      remote-control.control-enable = true;
+    };
+  };
 
   hardware.bluetooth.enable = true; # enables support for Bluetooth
   hardware.bluetooth.powerOnBoot = true; # powers up the default Bluetooth controller on boot
@@ -130,7 +147,7 @@ in {
     isNormalUser = true;
     shell = pkgs.zsh;
     description = "Lucas David Traverso";
-    extraGroups = [ "networkmanager" "wheel" "docker" ];
+    extraGroups = [ "networkmanager" "wheel" "docker" "wireshark" "unbound" ];
     packages = with pkgs; [
     #  thunderbird
     ];
@@ -191,6 +208,8 @@ in {
     eza
     watchexec
     dogdns
+    knot-dns
+    dig
     shellcheck
     tree
     up
@@ -261,6 +280,7 @@ in {
   programs.zsh.enable = true;
   programs.kdeconnect.enable = true;
   programs.firejail.enable = true;
+  programs.wireshark.enable = true;
   programs.direnv = {
     enable = true;
   };
