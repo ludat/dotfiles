@@ -102,13 +102,6 @@ in {
     };
   };
 
-  # Enable the XFCE Desktop Environment.
-  services.xserver.desktopManager.xfce = {
-    enable = true;
-    # noDesktop = true;
-    enableXfwm = false;
-  };
-  services.xserver.windowManager.i3.enable = true;
   services.xserver.displayManager.sddm.enable = true;
   services.xserver.desktopManager.plasma5.enable = true;
 
