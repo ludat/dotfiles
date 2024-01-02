@@ -198,6 +198,7 @@ in {
     vscode
     jetbrains.webstorm
     xh
+    bruno
     eza
     watchexec
     dogdns
@@ -247,6 +248,7 @@ in {
     plasma5Packages.kolourpaint
     kdenlive
     xdotool
+    obs-studio
 
     yaml-language-server
     aria
