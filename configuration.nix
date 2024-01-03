@@ -189,6 +189,7 @@ in {
     htop
     stack
     postgresql
+    pgcli
     zlib.dev
     just
     ghcid
