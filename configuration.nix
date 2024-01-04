@@ -244,6 +244,7 @@ in {
     nix-tree
     nix-du
     graphviz
+    asusctl
 
     # kde
     plasma5Packages.kalk
@@ -298,14 +299,13 @@ in {
   #services.flatpak.enable = true;
   #xdg.portal.enable = true;
   #xdg.portal.wlr.enable = true;
+  services.asusd = {
+    enable = true;
+    enableUserService = true;
+  };
 
-  # Open ports in the firewall.
-  # networking.firewall.allowedTCPPorts = [ ... ];
-  # networking.firewall.allowedUDPPorts = [ ... ];
   networking.firewall.allowedTCPPorts = [ 8384 22000 ];
   networking.firewall.allowedUDPPorts = [ 22000 21027 ];
-  # Or disable the firewall altogether.
-  # networking.firewall.enable = false;
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
@@ -313,6 +313,6 @@ in {
   # this value at the release version of the first install of this system.
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
-  system.stateVersion = "23.05"; # Did you read the comment?
+  system.stateVersion = "24.11"; # Did you read the comment?
 
 }
