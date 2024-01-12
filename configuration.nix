@@ -166,8 +166,6 @@ in {
     pciutils
     wget
     xorg.xkill
-    xfce.xfce4-whiskermenu-plugin
-    xfce.xfce4-pulseaudio-plugin
     tmux
     openssh
     git
@@ -192,6 +190,7 @@ in {
     pgcli
     zlib.dev
     just
+    hyperfine
     ghcid
     docker-compose
     nodejs
