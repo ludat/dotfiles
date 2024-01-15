@@ -214,6 +214,7 @@ in {
     xorg.xev
     libnotify
     libreoffice
+    megasync
 
     # kubernetes stuff
     k9s
