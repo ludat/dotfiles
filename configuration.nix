@@ -90,7 +90,6 @@ in {
 
   hardware.nvidia = {
     modesetting.enable = true;
-    open = true;
     nvidiaSettings = true;
   };
 
