@@ -23,3 +23,5 @@
 	tool = meld
 [gui]
 	editor = gedit
+[init]
+	defaultBranch = main
