@@ -161,6 +161,12 @@ in {
     file
     tmux
     ranger
+    yazi
+    # for previews for yazi
+      poppler
+      ffmpegthumbnailer
+    #
+
     lshw
     pciutils
     wget
@@ -240,6 +246,7 @@ in {
     (nerdfonts.override {fonts = ["FiraCode" "FiraMono" "Terminus"];})
     ncdu
     nix-diff
+    nvd
     nix-tree
     nix-du
     nix-output-monitor
