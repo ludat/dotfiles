@@ -242,6 +242,7 @@ in {
     nix-diff
     nix-tree
     nix-du
+    nix-output-monitor
     graphviz
     asusctl
 
