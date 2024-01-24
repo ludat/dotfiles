@@ -166,6 +166,7 @@ in {
       poppler
       ffmpegthumbnailer
     #
+    simplescreenrecorder
 
     lshw
     pciutils
