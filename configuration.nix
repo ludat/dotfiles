@@ -188,6 +188,7 @@ in {
     xsel
     arandr
     slack
+    discord
     trippy
     htop
     stack
@@ -220,6 +221,8 @@ in {
     libnotify
     libreoffice
     megasync
+    binutils
+    unixtools.xxd
 
     # kubernetes stuff
     k9s
