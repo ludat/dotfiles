@@ -175,6 +175,7 @@ in {
     tmux
     openssh
     git
+    ffmpeg
     tig
     delta
     dyff
