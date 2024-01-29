@@ -245,6 +245,7 @@ in {
     meld
     atuin
     ripgrep
+    sd
     fd
     # nixpkgs-stable.legacyPackages.x86_64-linux.emacs
     emacs29
