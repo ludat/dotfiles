@@ -291,7 +291,10 @@ in {
   programs.zsh.enable = true;
   programs.kdeconnect.enable = true;
   programs.firejail.enable = true;
-  programs.wireshark.enable = true;
+  programs.wireshark = {
+    enable = true;
+    package = pkgs.wireshark;
+  };
   programs.direnv = {
     enable = true;
   };
