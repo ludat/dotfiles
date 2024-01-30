@@ -211,6 +211,8 @@ in {
     eza
     watchexec
     dogdns
+    socat
+    netcat-openbsd
     knot-dns
     dig
     shellcheck
