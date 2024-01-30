@@ -57,6 +57,7 @@
     ~/.config/git:
     ~/.config/i3:
     ~/.config/ripgreprc:
+    ~/.config/yazi:
     ~/.config/atuin:
       force: true
     ~/.makepkg.conf:
