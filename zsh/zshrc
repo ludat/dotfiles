@@ -1,4 +1,5 @@
 # zmodload zsh/zprof
+export PATH="$PATH:$HOME/.local/bin"
 export PATH="$PATH:$HOME/.ghcup/bin:$HOME/.cabal/bin"
 export PATH="$PATH:$HOME/.emacs.d/bin"
 export PATH="$PATH:$HOME/.nix-profile/bin"
