@@ -1,3 +1,4 @@
 [manager]
 sort_by = "natural"
+sort_reverse = false
 show_hidden = true
