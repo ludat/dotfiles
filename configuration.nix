@@ -170,6 +170,8 @@ in {
 
     lshw
     pciutils
+    usbutils
+    inxi
     wget
     xorg.xkill
     tmux
