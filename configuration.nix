@@ -76,11 +76,6 @@ in {
     LC_TIME = "es_AR.UTF-8";
   };
 
-  # Enable the X11 windowing system.
-  services.xserver.enable = true;
-  services.xserver.xkbOptions = "ctrl:nocaps";
-  services.xserver.videoDrivers = [ "nvidia" ];
-
   # Nvidia stuff
   hardware.opengl = {
     enable = true;
@@ -106,9 +101,16 @@ in {
   services.xserver.desktopManager.plasma5.enable = true;
 
   # Configure keymap in X11
+
+  # Enable the X11 windowing system.
   services.xserver = {
-    layout = "us";
-    xkbVariant = "altgr-intl";
+    enable = true;
+    videoDrivers = [ "nvidia" ];
+    xkb = {
+      options = "ctrl:nocaps";
+      variant = "altgr-intl";
+      layout = "us";
+    };
   };
 
   # Enable CUPS to print documents.
@@ -131,9 +133,6 @@ in {
     # no need to redefine it in your config for now)
     #media-session.enable = true;
   };
-
-  # Enable touchpad support (enabled default in most desktopManager).
-  # services.xserver.libinput.enable = true;
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.ludat = {
