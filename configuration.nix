@@ -228,6 +228,7 @@ in {
     megasync
     binutils
     unixtools.xxd
+    hwatch
 
     # kubernetes stuff
     k9s
