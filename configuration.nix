@@ -27,6 +27,7 @@ in {
   # Bootloader.
   boot.kernelPackages = pkgs.linuxPackages_latest;
   boot.loader.systemd-boot.enable = true;
+  boot.binfmt.emulatedSystems = [ "aarch64-linux" ];
   boot.loader.efi.canTouchEfiVariables = true;
   boot.tmp.useTmpfs = true;
   networking.hostName = "republic-ludat"; # Define your hostname.
@@ -139,7 +140,7 @@ in {
     isNormalUser = true;
     shell = pkgs.zsh;
     description = "Lucas David Traverso";
-    extraGroups = [ "networkmanager" "wheel" "docker" "wireshark" "unbound" ];
+    extraGroups = [ "networkmanager" "wheel" "docker" "wireshark" "unbound" "libvirtd" ];
     packages = with pkgs; [
     #  thunderbird
     ];
@@ -302,6 +303,9 @@ in {
   programs.direnv = {
     enable = true;
   };
+  programs.virt-manager.enable = true;
+  virtualisation.libvirtd.enable = true;
+  virtualisation.libvirtd.qemu.ovmf.packages = [ pkgs.OVMFFull.fd pkgs.pkgsCross.aarch64-multiplatform.OVMF.fd ];
   virtualisation.docker.enable = true;
   #fonts.fontDir.enable = true;
 
