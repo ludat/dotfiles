@@ -167,6 +167,7 @@ in {
       ffmpegthumbnailer
     #
     simplescreenrecorder
+    xdragon
 
     lshw
     pciutils
