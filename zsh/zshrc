@@ -114,6 +114,15 @@ function rancd {
     cd -- "$(cat "$tempfile")"
     rm -- "$tempfile"
 }
+function ya() {
+   local tmp="$(mktemp -t "yazi-cwd.XXXXX")"
+   yazi "$@" --cwd-file="$tmp"
+   if cwd="$(cat -- "$tmp")" && [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]; then
+   cd -- "$cwd"
+   fi
+   rm -f -- "$tmp"
+}
+
 
 # export PYENV_ROOT="$HOME/.pyenv"
 # export PATH="$PYENV_ROOT/bin:$PATH"
