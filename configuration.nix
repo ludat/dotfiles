@@ -306,7 +306,7 @@ in {
   };
   programs.virt-manager.enable = true;
   virtualisation.libvirtd.enable = true;
-  virtualisation.libvirtd.qemu.ovmf.packages = [ pkgs.OVMFFull.fd pkgs.pkgsCross.aarch64-multiplatform.OVMF.fd ];
+  # virtualisation.libvirtd.qemu.ovmf.packages = [ pkgs.OVMFFull.fd pkgs.pkgsCross.aarch64-multiplatform.OVMF.fd ];
   virtualisation.docker.enable = true;
   #fonts.fontDir.enable = true;
 
