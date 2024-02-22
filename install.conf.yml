@@ -58,6 +58,7 @@
     ~/.config/i3:
     ~/.config/ripgreprc:
     ~/.config/yazi:
+    ~/.config/k9s:
     ~/.config/atuin:
       force: true
     ~/.makepkg.conf:
