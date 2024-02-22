@@ -148,6 +148,10 @@ in {
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
+  nixpkgs.config.permittedInsecurePackages = [
+    "freeimage-unstable-2021-11-01"
+  ];
+
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
