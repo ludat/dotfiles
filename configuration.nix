@@ -219,6 +219,7 @@ in {
     watchexec
     dogdns
     socat
+    nmap
     netcat-openbsd
     knot-dns
     dig
