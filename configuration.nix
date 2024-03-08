@@ -53,7 +53,6 @@ in {
           forward-tls-upstream = true;
         }
       ];
-      remote-control.control-enable = true;
     };
   };
 
