@@ -210,7 +210,7 @@ in {
     nodejs
     yarn
     kitty
-    vscode
+    vscodium
     jetbrains.webstorm
     xh
     bruno
