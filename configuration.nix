@@ -278,7 +278,7 @@ in {
 
     yaml-language-server
     aria
-    mpv
+    (mpv.override { scripts = with mpvScripts; [uosc thumbfast mpris]; })
     spotify
     bcc
   ];
