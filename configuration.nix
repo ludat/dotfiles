@@ -222,6 +222,7 @@ in {
     socat
     nmap
     netcat-openbsd
+    nixos-firewall-tool
     knot-dns
     dig
     shellcheck
@@ -325,6 +326,7 @@ in {
     user = "ludat";
     configDir = "/home/ludat/.config/syncthing";
     dataDir = "/home/ludat/Documents";
+    openDefaultPorts = true;
   };
   services.locate.enable = true;
   #services.flatpak.enable = true;
@@ -334,9 +336,6 @@ in {
     enable = true;
     enableUserService = true;
   };
-
-  networking.firewall.allowedTCPPorts = [ 8384 22000 ];
-  networking.firewall.allowedUDPPorts = [ 22000 21027 ];
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
