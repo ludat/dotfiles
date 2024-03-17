@@ -158,6 +158,7 @@ in {
     firefox-devedition-bin
     chromium
     neovim
+    tldr
     parallel
     moreutils
     termdown
