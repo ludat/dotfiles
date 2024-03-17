@@ -218,6 +218,7 @@ in {
     eza
     watchexec
     dogdns
+    ldns
     socat
     nmap
     netcat-openbsd
