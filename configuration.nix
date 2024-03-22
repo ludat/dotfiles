@@ -159,6 +159,7 @@ in {
     firefox-devedition-bin
     chromium
     neovim
+    logseq
     tldr
     parallel
     moreutils
@@ -200,6 +201,8 @@ in {
     slack
     discord
     trippy
+    gping
+    mtr
     htop
     stack
     postgresql
