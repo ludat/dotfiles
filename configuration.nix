@@ -21,6 +21,7 @@ in {
     settings = {
       nix-path = [ "nixpkgs=${inputs.nixpkgs}" ];
       experimental-features = [ "nix-command" "flakes" "repl-flake" ];
+      trusted-users = [ "root" "ludat" ];
     };
   };
 
