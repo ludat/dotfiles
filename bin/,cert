@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 # nslookup "$1"
 openssl s_client -showcerts -servername "$1" -connect "$1":"${2:-443}" <<< "Q" | openssl x509 -text -noout
