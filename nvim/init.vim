@@ -67,7 +67,6 @@ Plug 'vim-airline/vim-airline-themes' " Load airline themes
 Plug 'tpope/vim-fugitive' " Add awesome support for git
 Plug 'airblade/vim-gitgutter' " Show deleted/added/modified tags for vim
 Plug 'sjl/gundo.vim' " Undo and redo tree
-Plug 'ctrlpvim/ctrlp.vim' " Fuzzy find for files
 Plug 'benekastah/neomake' " Syntax checker
 Plug 'Lokaltog/vim-easymotion' " Fast move inside vim
 Plug 'justinmk/vim-sneak' " More magick s command
@@ -84,15 +83,15 @@ Plug 'vim-scripts/django.vim'
 Plug 'vim-scripts/listmaps.vim' " List maps
 Plug 'luochen1990/rainbow' " Color different paretheses
 Plug 'tpope/vim-repeat' " Improve the . repeat command
-" Plug 'tkztmk/vim-vala' " Add syntax highlight for vala
 Plug 'rust-lang/rust.vim' " Add syntax highlight for rust
 Plug 'lambdatoast/elm.vim' " Elm extensions
-" Plug 'phildawes/racer', { 'for': 'rust','do': 'cargo build --release'}
 Plug 'chase/vim-ansible-yaml' " Add syntax highlight for ansible yaml
 Plug 'vim-scripts/iptables' " Add syntax highlight for iptables
 Plug 'rstacruz/sparkup' " Magic to create html
 Plug 'cespare/vim-toml' " Because cargo.toml
 Plug 'wellle/targets.vim' " provide additional text objects
+Plug 'nvim-lua/plenary.nvim' " this is a dependency for telescope
+Plug 'nvim-telescope/telescope.nvim'
 Plug 'lambdalisue/suda.vim'
 Plug 'hashivim/vim-terraform'
 Plug 'elixir-editors/vim-elixir'
@@ -138,10 +137,12 @@ let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_theme='badwolf'
 " }}}
-" ctrlp.vim {{{
-let g:ctrlp_map = '<leader>p'
-let g:ctrlp_cmd = 'CtrlPLastMode'
-let g:ctrlp_extensions = ['buffertag', 'tag', 'line', 'dir']
+" telescope.vim {{{
+" Find files using Telescope command-line sugar.
+nnoremap <leader>ff <cmd>Telescope find_files<cr>
+nnoremap <leader>fg <cmd>Telescope live_grep<cr>
+nnoremap <leader>fb <cmd>Telescope buffers<cr>
+nnoremap <leader>fh <cmd>Telescope help_tags<cr>
 " }}}
 " jedi-vim {{{
 let g:jedi#completions_enabled = 0
