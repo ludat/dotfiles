@@ -91,7 +91,7 @@ Plug 'rstacruz/sparkup' " Magic to create html
 Plug 'cespare/vim-toml' " Because cargo.toml
 Plug 'wellle/targets.vim' " provide additional text objects
 Plug 'nvim-lua/plenary.nvim' " this is a dependency for telescope
-Plug 'nvim-telescope/telescope.nvim'
+Plug 'nvim-telescope/telescope.nvim', { 'branch': '0.1.x' }
 Plug 'lambdalisue/suda.vim'
 Plug 'hashivim/vim-terraform'
 Plug 'elixir-editors/vim-elixir'
@@ -136,13 +136,6 @@ nmap <Leader>a <Plug>(EasyAlign)
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_theme='badwolf'
-" }}}
-" telescope.vim {{{
-" Find files using Telescope command-line sugar.
-nnoremap <leader>ff <cmd>Telescope find_files<cr>
-nnoremap <leader>fg <cmd>Telescope live_grep<cr>
-nnoremap <leader>fb <cmd>Telescope buffers<cr>
-nnoremap <leader>fh <cmd>Telescope help_tags<cr>
 " }}}
 " jedi-vim {{{
 let g:jedi#completions_enabled = 0
@@ -195,6 +188,14 @@ set pastetoggle=<F2>
 " Star search in visualmode
 vnoremap * "ty/<C-R>t<CR>
 
+" telescope.vim {{{
+" Find files using Telescope command-line sugar.
+nnoremap <leader>ff :Telescope find_files<CR>
+nnoremap <leader>fg :Telescope live_grep<CR>
+nnoremap <leader>fb :Telescope buffers<CR>
+nnoremap <leader>fh :Telescope help_tags<CR>
+" }}}
+
 " Set Y to como se debe
 nnoremap H ^
 nnoremap L $
@@ -203,9 +204,9 @@ nnoremap K <nop>
 nnoremap <silent> S i<CR><esc>k:s/ \+$//<CR>$
 
 " Tabs navigation
-nmap <leader>b :bprevious<CR>
-nmap <leader>n :bnext<CR>
-nmap <leader>d :bdelete<CR>
+nnoremap <leader>b :bprevious<CR>
+nnoremap <leader>n :bnext<CR>
+nnoremap <leader>d :bdelete<CR>
 
 " Folding focus
 nnoremap <leader>z zMzvzz
