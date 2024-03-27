@@ -99,7 +99,7 @@ in {
   };
 
   services.xserver.displayManager.sddm.enable = true;
-  services.xserver.desktopManager.plasma5.enable = true;
+  services.desktopManager.plasma6.enable = true;
 
   # Configure keymap in X11
 
@@ -197,6 +197,7 @@ in {
     fasd
     git-cola
     xsel
+    wl-clipboard
     arandr
     slack
     discord
@@ -277,10 +278,11 @@ in {
     asusctl
 
     # kde
-    plasma5Packages.kalk
-    plasma5Packages.kolourpaint
+    kdePackages.kalk
+    kdePackages.kolourpaint
     kdenlive
-    xdotool
+    wtype
+
     obs-studio
 
     yaml-language-server
