@@ -31,12 +31,7 @@ in {
   boot.binfmt.emulatedSystems = [ "aarch64-linux" ];
   boot.loader.efi.canTouchEfiVariables = true;
   boot.tmp.useTmpfs = true;
-  networking.hostName = "republic-ludat"; # Define your hostname.
-  # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
-
-  # Configure network proxy if necessary
-  # networking.proxy.default = "http://user:password@proxy:port/";
-  # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
+  networking.hostName = "republic-ludat";
 
   # Enable networking
   networking.networkmanager.enable = true;
@@ -314,9 +309,7 @@ in {
     enable = true;
     package = pkgs.wireshark;
   };
-  programs.direnv = {
-    enable = true;
-  };
+  programs.direnv.enable = true;
   programs.virt-manager.enable = true;
   virtualisation.libvirtd.enable = true;
   # virtualisation.libvirtd.qemu.ovmf.packages = [ pkgs.OVMFFull.fd pkgs.pkgsCross.aarch64-multiplatform.OVMF.fd ];
