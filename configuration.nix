@@ -310,6 +310,7 @@ in {
     package = pkgs.wireshark;
   };
   programs.direnv.enable = true;
+  programs.nix-ld.enable = true;
   programs.virt-manager.enable = true;
   virtualisation.libvirtd.enable = true;
   # virtualisation.libvirtd.qemu.ovmf.packages = [ pkgs.OVMFFull.fd pkgs.pkgsCross.aarch64-multiplatform.OVMF.fd ];
