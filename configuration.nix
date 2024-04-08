@@ -154,6 +154,7 @@ in {
     firefox-devedition-bin
     chromium
     neovim
+    bc
     logseq
     tldr
     parallel
