@@ -27,6 +27,9 @@ in {
 
   # Bootloader.
   boot.kernelPackages = pkgs.linuxPackages_latest;
+  boot.kernel.sysctl = {
+    "vm.max_map_count" = 1048576;
+  };
   boot.loader.systemd-boot.enable = true;
   boot.binfmt.emulatedSystems = [ "aarch64-linux" ];
   boot.loader.efi.canTouchEfiVariables = true;
@@ -41,6 +44,7 @@ in {
     settings = {
       server = {
         interface = [ "127.0.0.1" "::1" ];
+        prefetch = true;
       };
       forward-zone = [
         {
@@ -93,7 +97,7 @@ in {
     };
   };
 
-  services.xserver.displayManager.sddm.enable = true;
+  services.displayManager.sddm.enable = true;
   services.desktopManager.plasma6.enable = true;
 
   # Configure keymap in X11
