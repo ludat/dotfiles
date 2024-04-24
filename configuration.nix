@@ -224,6 +224,7 @@ in {
     nmap
     netcat-openbsd
     nixos-firewall-tool
+    devbox
     knot-dns
     dig
     shellcheck
