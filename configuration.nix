@@ -236,7 +236,7 @@ in {
     xorg.xev
     libnotify
     libreoffice
-    megasync
+    (libsForQt5.callPackage ./megasync {})
     binutils
     unixtools.xxd
     hwatch
