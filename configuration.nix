@@ -76,27 +76,6 @@ in {
     LC_TIME = "es_AR.UTF-8";
   };
 
-  # Nvidia stuff
-  hardware.opengl = {
-    enable = true;
-    driSupport = true;
-    driSupport32Bit = true;
-  };
-
-  hardware.nvidia = {
-    modesetting.enable = true;
-    nvidiaSettings = true;
-  };
-
-  hardware.nvidia.prime = {
-    amdgpuBusId = "PCI:4:0:0";
-    nvidiaBusId = "PCI:1:0:0";
-    offload = {
-      enable = true;
-      enableOffloadCmd = true;
-    };
-  };
-
   services.displayManager.sddm.enable = true;
   services.desktopManager.plasma6.enable = true;
 
@@ -105,7 +84,6 @@ in {
   # Enable the X11 windowing system.
   services.xserver = {
     enable = true;
-    videoDrivers = [ "nvidia" ];
     xkb = {
       options = "ctrl:nocaps";
       variant = "altgr-intl";
