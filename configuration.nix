@@ -84,6 +84,7 @@ in {
   # Enable the X11 windowing system.
   services.xserver = {
     enable = true;
+    videoDrivers = [ "nvidia" ];
     xkb = {
       options = "ctrl:nocaps";
       variant = "altgr-intl";
