@@ -219,6 +219,7 @@ in {
     binutils
     unixtools.xxd
     hwatch
+    updog
 
     # kubernetes stuff
     k9s
