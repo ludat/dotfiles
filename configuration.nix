@@ -161,6 +161,7 @@ in {
     git
     ffmpeg
     tig
+    pueue
     delta
     dyff
     fx
