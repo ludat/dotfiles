@@ -24,9 +24,13 @@ in {
       trusted-users = [ "root" "ludat" ];
     };
   };
+  nixpkgs.config.permittedInsecurePackages = [
+    "electron-28.3.3"
+  ];
+
 
   # Bootloader.
-  # boot.kernelPackages = pkgs.linuxPackages_latest;
+  boot.kernelPackages = pkgs.linuxPackages_latest;
   boot.kernel.sysctl = {
     "vm.max_map_count" = 1048576;
   };
@@ -244,7 +248,7 @@ in {
     sd
     fd
     # nixpkgs-stable.legacyPackages.x86_64-linux.emacs
-    emacs29
+    emacs
     (nerdfonts.override {fonts = ["FiraCode" "FiraMono" "Terminus"];})
     ncdu
     nix-diff
