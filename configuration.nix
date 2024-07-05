@@ -153,6 +153,7 @@ in {
     #
     simplescreenrecorder
     xdragon
+    helvum
 
     lshw
     pciutils
@@ -198,6 +199,7 @@ in {
     kitty
     vscodium
     jetbrains.webstorm
+    jetbrains.idea-ultimate
     xh
     bruno
     eza
@@ -270,6 +272,7 @@ in {
     yaml-language-server
     aria
     (mpv.override { scripts = with mpvScripts; [uosc thumbfast mpris]; })
+    yt-dlp
     spotify
     bcc
   ];
