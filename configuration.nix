@@ -25,7 +25,7 @@ in {
     };
   };
   nixpkgs.config.permittedInsecurePackages = [
-    "electron-28.3.3"
+    "electron-27.3.11"
   ];
 
 
