@@ -154,6 +154,7 @@ in {
     simplescreenrecorder
     xdragon
     helvum
+    xwaylandvideobridge
 
     lshw
     pciutils
@@ -172,11 +173,12 @@ in {
     fx
     telegram-desktop
     keepassxc
-    dotbot
+    # dotbot
     stack
     zsh
     fasd
     git-cola
+
     xsel
     wl-clipboard
     arandr
