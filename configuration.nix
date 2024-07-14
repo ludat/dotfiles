@@ -173,7 +173,7 @@ in {
     fx
     telegram-desktop
     keepassxc
-    # dotbot
+    dotbot
     stack
     zsh
     fasd
