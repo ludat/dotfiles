@@ -1,27 +1,47 @@
 [merge]
-	tool = meld
-	conflictstyle = diff3
-	keepbackup = true
+    tool = meld
+    conflictstyle = diff3
+    keepbackup = true
 [user]
-	email = lucas6246@gmail.com
-	name = Lucas David Traverso
+    email = lucas6246@gmail.com
+    name = Lucas David Traverso
 [push]
-	default = current
+    default = current
 [cola]
-	tabwidth = 4
-	fontdiff = Monospace,10,-1,5,50,0,0,0,0,0
+    tabwidth = 4
+    fontdiff = Monospace,10,-1,5,50,0,0,0,0,0
 [credential]
-	helper = cache --timeout=3600
+    helper = cache --timeout=3600
 [alias]
-	co = checkout
-	c = commit -v
-	st = status
-	exec = "!exec "
-	lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
-	lb = !git reflog show --pretty=format:'%gs ~ %gd' --date=relative | grep 'checkout:' | grep -oE '[^ ]+ ~ .*' | awk -F~ '!seen[$1]++' | head -n 10 | awk -F' ~ HEAD@{' '{printf(\"  \\033[33m%s: \\033[37m %s\\033[0m\\n\", substr($2, 1, length($2)-1), $1)}'
+    co = checkout
+    c = commit -v
+    st = status
+    exec = "!exec "
+    lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
+    lb = !git reflog show --pretty=format:'%gs ~ %gd' --date=relative | grep 'checkout:' | grep -oE '[^ ]+ ~ .*' | awk -F~ '!seen[$1]++' | head -n 10 | awk -F' ~ HEAD@{' '{printf(\"  \\033[33m%s: \\033[37m %s\\033[0m\\n\", substr($2, 1, length($2)-1), $1)}'
 [diff]
-	tool = meld
+    tool = meld
 [gui]
-	editor = kate
+    editor = kate
 [init]
-	defaultBranch = main
+    defaultBranch = main
+[core]
+    pager = delta
+
+[interactive]
+    diffFilter = delta --color-only --features=interactive
+
+[delta]
+    features = decorations
+
+[delta "interactive"]
+    keep-plus-minus-markers = false
+
+[delta "decorations"]
+    commit-decoration-style = blue ol
+    commit-style = raw
+    file-style = omit
+    hunk-header-decoration-style = blue box
+    hunk-header-file-style = red
+    hunk-header-line-number-style = "#067a00"
+    hunk-header-style = file line-number syntax
