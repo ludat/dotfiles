@@ -26,6 +26,7 @@ in {
   };
   nixpkgs.config.permittedInsecurePackages = [
     "electron-27.3.11"
+    "olm-3.2.16"
   ];
 
 
@@ -62,6 +63,7 @@ in {
 
   hardware.bluetooth.enable = true; # enables support for Bluetooth
   hardware.bluetooth.powerOnBoot = true; # powers up the default Bluetooth controller on boot
+  hardware.nvidia.open = true;
   # Set your time zone.
   time.timeZone = "America/Argentina/Buenos_Aires";
 
