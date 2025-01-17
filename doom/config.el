@@ -15,7 +15,7 @@
 ;; - `doom-variable-pitch-font' -- a non-monospace font (where applicable)
 ;; - `doom-big-font' -- used for `doom-big-font-mode'; use this for
 ;;   presentations or streaming.
-;; - `doom-unicode-font' -- for unicode glyphs
+;; - `doom-symbol-font' -- for symbols
 ;; - `doom-serif-font' -- for the `fixed-pitch-serif' face
 ;;
 ;; See 'C-h v doom-font' for documentation and more examples of what they
@@ -23,11 +23,8 @@
 ;;
 ;;(setq doom-font (font-spec :family "Fira Code" :size 12 :weight 'semi-light)
 ;;      doom-variable-pitch-font (font-spec :family "Fira Sans" :size 13))
+;;
 (setq doom-font (font-spec :family "FiraCode Nerd Font" :size 13))
-;; Since I want to avoid installing the whole nerdfonts package (which is huge
-;; the generic font with just the icons is not installed so I need to override
-;; that font to avoid emacs from crashing.
-(setq nerd-icons-font-family '("FiraCode Nerd Font"))
 
 ;; If you or Emacs can't find your font, use 'M-x describe-font' to look them
 ;; up, `M-x eval-region' to execute elisp code, and 'M-x doom/reload-font' to
@@ -45,7 +42,26 @@
 
 ;; If you use `org' and don't want your org files in the default location below,
 ;; change `org-directory'. It must be set before org loads!
-(setq org-directory "~/org/")
+(setq org-directory "~/Secrets/org/")
+(setq org-roam-directory "~/Secrets/org/roam/")
+(setq org-roam-dailies-capture-templates
+      '(("d"
+         "default"
+         entry
+         "* %?"
+         :target (file+head "%<%Y-%m-%d>.org" "%<%Y-%m-%d>\n"))))
+
+(setq org-roam-capture-templates
+      '(("d"
+         "default"
+         plain
+         "%?"
+         :target (file+head "%<%Y%m%d%H%M%S>-${slug}.org" "${title}\n")
+         :unnarrowed t)))
+
+;; (("d" "default" plain "%?" :target
+;;   (file+head "%<%Y%m%d%H%M%S>-${slug}.org" "#+title: ${title}\n")
+;;   :unnarrowed t))
 
 ;; Whenever you reconfigure a package, make sure to wrap your config in an
 ;; `after!' block, otherwise Doom's defaults may override your settings. E.g.
@@ -95,11 +111,3 @@
   (interactive)
   (ediff-files (concat doom-user-dir "init.el")
                (concat doom-emacs-dir "templates/init.example.el")))
-
-; (use-package! org-download
-;   :after org
-;   :config
-;         (setq-default org-download-image-dir "./static/"
-;                       org-download-screenshot-method "xfce4-screenshooter -f %s"
-;                       org-download-method 'directory
-;                       org-download-heading-lvl 1))
