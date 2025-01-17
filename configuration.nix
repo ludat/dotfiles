@@ -6,6 +6,7 @@
 
 let
   stable-pkgs = import inputs.nixpkgs-stable {
+    config.allowUnfree = true;
     system = pkgs.system;
   };
 in {
@@ -20,13 +21,13 @@ in {
     # https://github.com/NixOS/nix/issues/3803#issuecomment-1181667475
     settings = {
       nix-path = [ "nixpkgs=${inputs.nixpkgs}" ];
-      experimental-features = [ "nix-command" "flakes" "repl-flake" ];
+      experimental-features = [ "nix-command" "flakes" ];
       trusted-users = [ "root" "ludat" ];
     };
   };
+
   nixpkgs.config.permittedInsecurePackages = [
     "electron-27.3.11"
-    "olm-3.2.16"
   ];
 
 
@@ -50,6 +51,7 @@ in {
       server = {
         interface = [ "127.0.0.1" "::1" ];
         prefetch = true;
+        cache-max-negative-ttl = 0;
       };
       forward-zone = [
         {
@@ -102,7 +104,7 @@ in {
   services.printing.enable = true;
 
   # Enable sound with pipewire.
-  hardware.pulseaudio.enable = false;
+  services.pulseaudio.enable = false;
   security.rtkit.enable = true;
   services.pipewire = {
     enable = true;
@@ -208,7 +210,7 @@ in {
     bruno
     eza
     watchexec
-    dogdns
+    doggo
     ldns
     socat
     nmap
@@ -254,8 +256,12 @@ in {
     sd
     fd
     # nixpkgs-stable.legacyPackages.x86_64-linux.emacs
-    emacs
-    (nerdfonts.override {fonts = ["FiraCode" "FiraMono" "Terminus"];})
+    # emacs
+    emacs30-pgtk
+    ispell
+    nerd-fonts.fira-code
+    nerd-fonts.fira-mono
+    nerd-fonts.terminess-ttf
     ncdu
     nix-diff
     nvd
@@ -271,11 +277,16 @@ in {
     kdenlive
     wtype
 
-    obs-studio
-
     yaml-language-server
     aria
-    (mpv.override { scripts = with mpvScripts; [uosc thumbfast mpris]; })
+    (mpv.override
+      { scripts = with mpvScripts; [
+        uosc
+        thumbfast
+        mpris
+        videoclip
+        smart-copy-paste-2
+      ]; })
     yt-dlp
     spotify
     bcc
@@ -306,6 +317,7 @@ in {
   programs.direnv.enable = true;
   programs.nix-ld.enable = true;
   programs.virt-manager.enable = true;
+  programs.obs-studio.enable = true;
   virtualisation.libvirtd.enable = true;
   # virtualisation.libvirtd.qemu.ovmf.packages = [ pkgs.OVMFFull.fd pkgs.pkgsCross.aarch64-multiplatform.OVMF.fd ];
   virtualisation.docker.enable = true;
