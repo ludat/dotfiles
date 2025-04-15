@@ -7,7 +7,7 @@ mkdir -p monitoreo
 
 while true; do
     set +e
-    curl -v -s -f -L "$1" &> ./monitoreo/latest_output.temp.txt
+    curl -v -s -f --max-time 10 -L "$1" &> ./monitoreo/latest_output.temp.txt
     result=$?
     set -e
     if [ "$result" -eq 0 ]; then
