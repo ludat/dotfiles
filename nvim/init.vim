@@ -182,9 +182,6 @@ nnoremap <CR> :
 " Replace Esc for fd
 imap fd <Esc>
 
-" toggle paste with F2
-set pastetoggle=<F2>
-
 " Star search in visualmode
 vnoremap * "ty/<C-R>t<CR>
 

@@ -26,13 +26,8 @@ in {
     };
   };
 
-  nixpkgs.config.permittedInsecurePackages = [
-    "electron-27.3.11"
-  ];
-
-
   # Bootloader.
-  # boot.kernelPackages = pkgs.linuxPackages_latest;
+  boot.kernelPackages = pkgs.linuxPackages_latest;
   boot.kernel.sysctl = {
     "vm.max_map_count" = 1048576;
   };
@@ -157,7 +152,7 @@ in {
     simplescreenrecorder
     xdragon
     helvum
-    xwaylandvideobridge
+    # xwaylandvideobridge
 
     lshw
     pciutils
@@ -179,6 +174,7 @@ in {
     # dotbot
     stack
     zsh
+    nushell
     fasd
     # git-cola
     (git-cola.override { python3Packages = python311.pkgs; })
@@ -194,12 +190,15 @@ in {
     htop
     stack
     postgresql
+    sqlite
+    sqlitestudio
     pgcli
     zlib.dev
     just
     hyperfine
     ghcid
     docker-compose
+    lazydocker
     nodejs
     yarn
     kitty
@@ -211,12 +210,13 @@ in {
     eza
     watchexec
     doggo
+    openssl
+    httptap
     ldns
     socat
     nmap
     netcat-openbsd
     nixos-firewall-tool
-    devbox
     knot-dns
     dig
     shellcheck
@@ -245,6 +245,7 @@ in {
     stern
     jq
     visidata
+    qsv
     bat
     yq-go
     heroku
@@ -258,6 +259,7 @@ in {
     # nixpkgs-stable.legacyPackages.x86_64-linux.emacs
     # emacs
     emacs30-pgtk
+    gnuplot
     ispell
     nerd-fonts.fira-code
     nerd-fonts.fira-mono
@@ -274,7 +276,7 @@ in {
     # kde
     kdePackages.kalk
     kdePackages.kolourpaint
-    kdenlive
+    kdePackages.kdenlive
     wtype
 
     yaml-language-server
@@ -306,6 +308,11 @@ in {
   #   enable = true;
   #   enableSSHSupport = true;
   # };
+  programs.nh = {
+    enable = true;
+    flake = "/home/ludat/dotfiles";
+  };
+
   programs.steam.enable = true;
   programs.zsh.enable = true;
   programs.kdeconnect.enable = true;
