@@ -164,6 +164,7 @@ in {
     openssh
     git
     ffmpeg
+    imagemagick
     tig
     pueue
     delta
