@@ -1,5 +1,5 @@
-# This is the implicit global project's config file, which is only used when
-# 'stack' is run outside of a real project. Settings here do _not_ act as
+# This is the implicit global project's configuration file, which is only used
+# when 'stack' is run outside of a real project. Settings here do _not_ act as
 # defaults for all projects. To change Stack's default settings, edit
 # '/home/ludat/.stack/config.yaml' instead.
 #
@@ -7,4 +7,4 @@
 # http://docs.haskellstack.org/en/stable/yaml_configuration/
 #
 packages: []
-resolver: lts-21.19
+snapshot: lts-23.10
