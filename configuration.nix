@@ -10,10 +10,12 @@ let
     system = pkgs.system;
   };
 in {
-  imports =
-    [ # Include the results of the hardware scan.
-      ./hardware-configuration.nix
-    ];
+  options = {
+    host = pkgs.lib.mkOption {
+      description = "host of the system";
+    };
+  };
+  config = {
   nix = {
     # since I'm using flakes I don't want channels instead I want nixpkgs to follow
     # my flake's nixpkgs
@@ -35,7 +37,7 @@ in {
   boot.binfmt.emulatedSystems = [ "aarch64-linux" ];
   boot.loader.efi.canTouchEfiVariables = true;
   boot.tmp.useTmpfs = true;
-  networking.hostName = "republic-ludat";
+  networking.hostName = config.host;
 
   # Enable networking
   networking.networkmanager.enable = true;
@@ -118,6 +120,7 @@ in {
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.ludat = {
     isNormalUser = true;
+    initialPassword = "ludat"; # mostly for testing with build-vm
     shell = pkgs.zsh;
     description = "Lucas David Traverso";
     extraGroups = [ "networkmanager" "wheel" "docker" "wireshark" "unbound" "libvirtd" ];
@@ -358,5 +361,5 @@ in {
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "24.11"; # Did you read the comment?
-
+  };
 }
