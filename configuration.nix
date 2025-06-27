@@ -89,7 +89,7 @@ in {
   # Enable the X11 windowing system.
   services.xserver = {
     enable = true;
-    videoDrivers = [ "nvidia" ];
+    videoDrivers = [ "amdgpu" "nvidia" ];
     xkb = {
       options = "ctrl:nocaps";
       variant = "altgr-intl";
@@ -155,8 +155,6 @@ in {
     simplescreenrecorder
     xdragon
     helvum
-    # xwaylandvideobridge
-
     lshw
     pciutils
     usbutils
@@ -174,14 +172,12 @@ in {
     dyff
     fx
     telegram-desktop
-    keepassxc
     # dotbot
     stack
     zsh
     nushell
     fasd
-    # git-cola
-    (git-cola.override { python3Packages = python311.pkgs; })
+    git-cola
 
     xsel
     wl-clipboard
@@ -232,7 +228,6 @@ in {
     xorg.xev
     libnotify
     libreoffice
-    megasync
     binutils
     unixtools.xxd
     hwatch
@@ -244,6 +239,7 @@ in {
     kubectl-cnpg
     kubectl-klock
     kubectl-explore
+    kubelogin-oidc
     kubernetes-helm
     (google-cloud-sdk.withExtraComponents [google-cloud-sdk.components.gke-gcloud-auth-plugin])
     stern
@@ -275,7 +271,6 @@ in {
     nix-du
     nix-output-monitor
     graphviz
-    asusctl
 
     # kde
     kdePackages.kalk
@@ -329,6 +324,10 @@ in {
   programs.nix-ld.enable = true;
   programs.virt-manager.enable = true;
   programs.obs-studio.enable = true;
+
+  programs.hyprland.enable = true;
+  programs.hyprland.withUWSM  = true;
+
   virtualisation.libvirtd.enable = true;
   # virtualisation.libvirtd.qemu.ovmf.packages = [ pkgs.OVMFFull.fd pkgs.pkgsCross.aarch64-multiplatform.OVMF.fd ];
   virtualisation.docker.enable = true;
@@ -348,11 +347,6 @@ in {
   services.locate.enable = true;
   #services.flatpak.enable = true;
   #xdg.portal.enable = true;
-  #xdg.portal.wlr.enable = true;
-  services.asusd = {
-    enable = true;
-    enableUserService = true;
-  };
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions

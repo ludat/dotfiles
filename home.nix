@@ -7,7 +7,7 @@ let
 in
 {
   imports = [
-    ./plasma.nix
+    # ./plasma.nix
   ];
   home.username = "ludat";
   home.homeDirectory = "/home/ludat";
@@ -16,6 +16,101 @@ in
     neovim
     curl
   ];
+
+  services.playerctld.enable = true;
+
+  services.megasync = {
+    enable = true;
+    forceWayland = true;
+  };
+
+  programs.keepassxc = {
+    enable = true;
+    settings = {
+      General = {
+        ConfigVersion = 2;
+      };
+
+      GUI = {
+        CompactMode = true;
+        MinimizeOnClose = true;
+        MinimizeToTray = true;
+        ShowTrayIcon = true;
+        TrayIconAppearance = "monochrome-dark";
+      };
+    };
+  };
+
+  programs.wofi.enable = true;
+  programs.hyprlock.enable = true;
+  services.hypridle.enable = true;
+
+  programs.waybar = {
+    enable = true;
+    systemd.enable = true;
+    settings = {
+      mainBar = {
+        layer = "top";
+        position = "top";
+        # height = 30;
+        # output = [
+        #   "eDP-1"
+        #   "HDMI-A-1"
+        # ];
+        modules-left = [
+          "hyprland/workspaces"
+          "hyprland/window"
+        ];
+        modules-center = [ ];
+        modules-right = [
+          "tray"
+          "battery"
+          "pulseaudio"
+          "pulseaudio#microphone"
+          "backlight"
+          "cpu"
+          "memory"
+          "disk"
+          "temperature"
+          # "custom/updates"
+          "network"
+          "hyprland/language"
+          # "custom/lock_screen"
+          # "custom/power
+        ];
+      };
+    };
+  };
+
+  services.network-manager-applet.enable = true;
+  services.mako.enable = true;
+
+  # programs.kitty.enable = true;
+  wayland.windowManager.hyprland.enable = true;
+  wayland.windowManager.hyprland.extraConfig = builtins.readFile ./hyprland/hyprland.conf;
+  wayland.windowManager.hyprland.systemd.enable = false;
+
+  # wayland.windowManager.hyprland.settings = {
+  #   "$mod" = "SUPER";
+  #   bind =
+  #     [
+  #       "$mod, F, exec, firefox"
+  #       ", Print, exec, grimblast copy area"
+  #     ]
+  #     ++ (
+  #       # workspaces
+  #       # binds $mod + [shift +] {1..9} to [move to] workspace {1..9}
+  #       builtins.concatLists (builtins.genList (i:
+  #           let ws = i + 1;
+  #           in [
+  #             "$mod, code:1${toString i}, workspace, ${toString ws}"
+  #             "$mod SHIFT, code:1${toString i}, movetoworkspace, ${toString ws}"
+  #           ]
+  #         )
+  #         9)
+  #     );
+  # };
+
   home.file = {
     ".zshrc" = {
       source = mkConfigLink zsh/zshrc;
@@ -68,6 +163,7 @@ in
     "atuin".source = mkConfigLink ./atuin;
     "direnv".source = mkConfigLink ./direnv;
     "kitty".source = mkConfigLink ./kitty;
+    # "hypr/hyperland.conf".source = mkConfigLink ./hypr/hyperland.conf;
   };
 
   # This value determines the Home Manager release that your
