@@ -10,14 +10,8 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
-    plasma-manager = {
-      url = "github:nix-community/plasma-manager";
-      inputs.nixpkgs.follows = "nixpkgs";
-      inputs.home-manager.follows = "home-manager";
-    };
   };
-  outputs = { self, nixpkgs, home-manager, plasma-manager, nixos-hardware, ...}@inputs: {
+  outputs = { self, nixpkgs, home-manager, nixos-hardware, ...}@inputs: {
     nixosConfigurations = {
       "legion-ludat" = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
