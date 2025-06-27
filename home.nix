@@ -44,6 +44,8 @@ in
   programs.wofi.enable = true;
   programs.hyprlock.enable = true;
   services.hypridle.enable = true;
+  services.hyprpaper.enable = true;
+  services.hyprpolkitagent.enable = true;
 
   programs.waybar = {
     enable = true;
