@@ -46,6 +46,7 @@ in
   services.hypridle.enable = true;
   services.hyprpaper.enable = true;
   services.hyprpolkitagent.enable = true;
+  wayland.windowManager.hyprland.systemd.enableXdgAutostart = true;
 
   programs.waybar = {
     enable = true;
