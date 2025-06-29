@@ -33,7 +33,11 @@ in {
   boot.kernel.sysctl = {
     "vm.max_map_count" = 1048576;
   };
-  boot.loader.systemd-boot.enable = true;
+  boot.loader.systemd-boot = {
+    enable = true;
+    memtest86.enable = true;
+    netbootxyz.enable = true;
+  };
   boot.binfmt.emulatedSystems = [ "aarch64-linux" ];
   boot.loader.efi.canTouchEfiVariables = true;
   boot.tmp.useTmpfs = true;
@@ -135,7 +139,7 @@ in {
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-    firefox-devedition-bin
+    firefox-devedition
     chromium
     neovim
     bc
@@ -184,9 +188,7 @@ in {
     arandr
     slack
     discord
-    trippy
     gping
-    mtr
     htop
     stack
     postgresql
@@ -300,9 +302,8 @@ in {
 
   console.useXkbConfig = true;
 
-  # Some programs need SUID wrappers, can be configured further or are
-  # started in user sessions.
-  # programs.mtr.enable = true;
+  programs.trippy.enable = true;
+  programs.mtr.enable = true;
   # programs.gnupg.agent = {
   #   enable = true;
   #   enableSSHSupport = true;

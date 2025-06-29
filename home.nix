@@ -3,7 +3,7 @@
 let
   configDir = "/home/ludat/dotfiles";
   mkConfigLink = path: config.lib.file.mkOutOfStoreSymlink
-    (toString (configDir + pkgs.lib.removePrefix (toString ./.) (toString path)));
+    (toString (configDir + lib.removePrefix (toString ./.) (toString path)));
 in
 {
   imports = [
@@ -16,6 +16,10 @@ in
     neovim
     curl
   ];
+
+  systemd.user.sessionVariables = {
+    NIXOS_OZONE_WL = "1";
+  };
 
   services.playerctld.enable = true;
 
@@ -58,8 +62,8 @@ in
     ];
   };
   programs.hyprlock.enable = true;
-  services.hypridle.enable = true;
-  services.hyprpaper.enable = true;
+  # services.hypridle.enable = true;
+  # services.hyprpaper.enable = true;
   services.hyprpolkitagent.enable = true;
   wayland.windowManager.hyprland.systemd.enableXdgAutostart = true;
 
@@ -440,7 +444,49 @@ in
   };
 
   services.network-manager-applet.enable = true;
-  services.mako.enable = true;
+  services.dunst = {
+    enable = true;
+    settings = {
+      global = {
+        monitor = "eDP-1";
+        # width = 300;
+        # height = 300;
+        # offset = "30x50";
+        origin = "top-right";
+        # transparency = 10;
+        frame_color = "#eceff1";
+        # font = "Droid Sans 9";
+      };
+
+      urgency_normal = {
+        background = "#37474f";
+        foreground = "#eceff1";
+        timeout = 10;
+      };
+    };
+  };
+  # services.mako = {
+  #   enable = true;
+  #   settings = {
+  #     actions = true;
+  #     anchor = "top-right";
+  #     background-color = "#000000";
+  #     border-color = "#FFFFFF";
+  #     border-radius = 0;
+  #     font = "monospace 10";
+  #     height = 100;
+  #     width = 300;
+  #     icons = true;
+  #     ignore-timeout = false;
+  #     layer = "top";
+  #     margin = 10;
+  #     markup = true;
+  #
+  #     "actionable=true" = {
+  #       anchor = "top-left";
+  #     };
+  #   };
+  # };
 
   # programs.kitty.enable = true;
   wayland.windowManager.hyprland.enable = true;
@@ -482,7 +528,7 @@ in
     ".config/nvim" = {
       source = mkConfigLink ./nvim;
       onChange = ''
-        export PATH=$PATH:${pkgs.lib.makeBinPath [pkgs.git]}
+        export PATH=$PATH:${lib.makeBinPath [pkgs.git]}
         cd .config/nvim
         if [ ! -f autoload/plug.vim ]; then
           ${pkgs.curl}/bin/curl -fLo autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim;
