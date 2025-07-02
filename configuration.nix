@@ -346,6 +346,8 @@ in {
     openDefaultPorts = true;
   };
   services.locate.enable = true;
+  # for hyprland
+  services.gnome.gnome-keyring.enable = true;
   #services.flatpak.enable = true;
   #xdg.portal.enable = true;
 
