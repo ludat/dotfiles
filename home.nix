@@ -104,6 +104,9 @@ in
       name = "Terminess Nerd Font Mono";
       size = 12;
     };
+    settings = {
+      update_check_interval = 0;
+    };
   };
   wayland.windowManager.hyprland = {
     enable = true;
