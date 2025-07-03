@@ -19,7 +19,6 @@ in
     hyprpicker
     brightnessctl
     pavucontrol
-    kitty
   ];
 
   systemd.user.sessionVariables = {
@@ -98,7 +97,14 @@ in
     };
   };
 
-  # programs.kitty.enable = true;
+  programs.kitty = {
+    enable = true;
+    themeFile = "Argonaut";
+    font = {
+      name = "Terminess Nerd Font Mono";
+      size = 12;
+    };
+  };
   wayland.windowManager.hyprland = {
     enable = true;
     extraConfig = builtins.readFile ./hyprland/hyprland.conf;
@@ -183,7 +189,6 @@ in
     "k9s".source = mkConfigLink ./k9s;
     "atuin".source = mkConfigLink ./atuin;
     "direnv".source = mkConfigLink ./direnv;
-    "kitty".source = mkConfigLink ./kitty;
     # "hypr/hyperland.conf".source = mkConfigLink ./hypr/hyperland.conf;
   };
 
