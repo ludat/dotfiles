@@ -203,7 +203,6 @@ in {
     lazydocker
     nodejs
     yarn
-    kitty
     vscodium
     jetbrains.webstorm
     jetbrains.idea-ultimate
