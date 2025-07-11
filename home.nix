@@ -17,6 +17,7 @@ in
     curl
     hyprshot
     hyprpicker
+    libgtop
     brightnessctl
     pavucontrol
   ];
