@@ -142,6 +142,7 @@ in {
     firefox-devedition
     chromium
     neovim
+    pwgen
     bc
     logseq
     tldr
