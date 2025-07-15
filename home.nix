@@ -20,6 +20,7 @@ in
     libgtop
     brightnessctl
     pavucontrol
+    qalculate-gtk
   ];
 
   systemd.user.sessionVariables = {
@@ -54,13 +55,11 @@ in
     enable = true;
     package = pkgs.rofi-wayland;
     plugins = with pkgs; [
-      rofi-calc
       rofi-systemd
     ];
     modes = [
       "drun"
       "window"
-      "calc"
       "recursivebrowser"
       "run"
       "combi"
