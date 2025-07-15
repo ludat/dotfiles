@@ -40,10 +40,15 @@
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
   hardware.cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
-  hardware.nvidia.prime = {
-    offload.enable = true;
-    offload.enableOffloadCmd = true;
-    nvidiaBusId = "PCI:01:0:0";
-    amdgpuBusId = "PCI:05:0:0";
+  hardware.nvidia = {
+    open = true;
+    powerManagement.enable = true;
+    prime = {
+      sync.enable = true;
+      # offload.enable = true;
+      # offload.enableOffloadCmd = true;
+      nvidiaBusId = "PCI:01:0:0";
+      amdgpuBusId = "PCI:05:0:0";
+    };
   };
 }
