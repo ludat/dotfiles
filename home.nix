@@ -70,6 +70,7 @@ in
   # services.hypridle.enable = true; # this crashes
   # services.hyprpaper.enable = true; # also crashes
   services.hyprpolkitagent.enable = true;
+  services.udiskie.enable = true;
 
   programs.hyprpanel = {
     enable = true;

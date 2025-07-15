@@ -344,6 +344,7 @@ in {
     dataDir = "/home/ludat/Documents";
     openDefaultPorts = true;
   };
+  services.udisks2.enable = true;
   services.locate.enable = true;
   # for hyprland
   services.gnome.gnome-keyring.enable = true;
