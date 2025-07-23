@@ -204,8 +204,8 @@ in {
     nodejs
     yarn
     vscodium
-    jetbrains.webstorm
-    jetbrains.idea-ultimate
+    # jetbrains.webstorm
+    # jetbrains.idea-ultimate
     xh
     bruno
     eza
@@ -249,7 +249,6 @@ in {
     qsv
     bat
     yq-go
-    heroku
     multitail
     bitwarden
     meld
@@ -326,6 +325,7 @@ in {
   programs.obs-studio.enable = true;
 
   programs.hyprland.enable = true;
+  services.hypridle.enable = true;
   programs.hyprland.withUWSM  = true;
 
   virtualisation.libvirtd.enable = true;
