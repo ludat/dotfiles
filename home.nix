@@ -1,4 +1,4 @@
-{ config, pkgs, lib, inputs, ... }:
+{ config, pkgs, lib, pkgs-unstable, ... }:
 
 let
   configDir = "/home/ludat/dotfiles";
@@ -16,13 +16,16 @@ in
     neovim
     curl
     hyprshot
+    wl-clipboard
     hyprpicker
     libgtop
     brightnessctl
     pavucontrol
     qalculate-gtk
-    opencode
+    pkgs-unstable.opencode
     # television
+    jetbrains.webstorm
+    jetbrains.idea-ultimate
   ];
 
   systemd.user.sessionVariables = {
@@ -53,7 +56,6 @@ in
     };
   };
 
-  programs.fuzzel.enable = true;
   programs.rofi = {
     enable = true;
     package = pkgs.rofi-wayland;

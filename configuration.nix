@@ -4,12 +4,7 @@
 
 { config, pkgs, inputs, ... }:
 
-let
-  stable-pkgs = import inputs.nixpkgs-stable {
-    config.allowUnfree = true;
-    system = pkgs.system;
-  };
-in {
+{
   options = {
     host = pkgs.lib.mkOption {
       description = "host of the system";
@@ -184,7 +179,6 @@ in {
     git-cola
 
     xsel
-    wl-clipboard
     arandr
     slack
     discord
@@ -204,8 +198,6 @@ in {
     nodejs
     yarn
     vscodium
-    # jetbrains.webstorm
-    # jetbrains.idea-ultimate
     xh
     bruno
     eza

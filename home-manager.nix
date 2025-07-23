@@ -1,4 +1,4 @@
-{ config, pkgs, inputs, ... }:
+{ config, inputs, specialArgs, ... }:
 {
   imports = [
     inputs.home-manager.nixosModules.home-manager
@@ -7,4 +7,5 @@
   home-manager.useUserPackages = true;
   home-manager.sharedModules = [];
   home-manager.users.ludat = ./home.nix;
+  home-manager.extraSpecialArgs = specialArgs;
 }
