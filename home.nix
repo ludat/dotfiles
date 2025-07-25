@@ -23,9 +23,6 @@ in
     pavucontrol
     qalculate-gtk
     pkgs-unstable.opencode
-    # television
-    jetbrains.webstorm
-    jetbrains.idea-ultimate
   ];
 
   systemd.user.sessionVariables = {
