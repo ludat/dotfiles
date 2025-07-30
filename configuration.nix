@@ -335,6 +335,7 @@
   services.udisks2.enable = true;
   services.locate.enable = true;
   # for hyprland
+  environment.pathsToLink = [ "/share/zsh" ];
   services.gnome.gnome-keyring.enable = true;
   #services.flatpak.enable = true;
   #xdg.portal.enable = true;
