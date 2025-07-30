@@ -1,6 +1,6 @@
 [merge]
     tool = meld
-    conflictstyle = diff3
+    conflictStyle = zdiff3
     keepbackup = true
 [user]
     email = lucas6246@gmail.com
@@ -19,29 +19,31 @@
     exec = "!exec "
     lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
     lb = !git reflog show --pretty=format:'%gs ~ %gd' --date=relative | grep 'checkout:' | grep -oE '[^ ]+ ~ .*' | awk -F~ '!seen[$1]++' | head -n 10 | awk -F' ~ HEAD@{' '{printf(\"  \\033[33m%s: \\033[37m %s\\033[0m\\n\", substr($2, 1, length($2)-1), $1)}'
+
 [diff]
     tool = meld
+    algorithm = histogram
+
 [gui]
     editor = kate
+
 [init]
     defaultBranch = main
+
 [core]
     pager = delta
 
 [interactive]
-    diffFilter = delta --color-only --features=interactive
+    diffFilter = delta --color-only
 
 [delta]
     features = decorations
+    navigate = true
+    hyperlinks = true
 
-[delta "interactive"]
-    keep-plus-minus-markers = false
+[pull]
+    rebase = true
 
-[delta "decorations"]
-    commit-decoration-style = blue ol
-    commit-style = raw
-    file-style = omit
-    hunk-header-decoration-style = blue box
-    hunk-header-file-style = red
-    hunk-header-line-number-style = "#067a00"
-    hunk-header-style = file line-number syntax
+[rerere]
+    enabled = true
+    autoUpdate = true
