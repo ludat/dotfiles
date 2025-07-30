@@ -22,6 +22,9 @@ in
     brightnessctl
     pavucontrol
     qalculate-gtk
+    taskwarrior-tui
+    zed-editor
+
     pkgs-unstable.opencode
   ];
 
@@ -67,6 +70,9 @@ in
       "combi"
     ];
   };
+  # programs.taskwarrior.enable = true;
+  # programs.taskwarrior.package = pkgs.taskwarrior3;
+  services.pueue.enable = true;
   programs.hyprlock.enable = true;
   services.hyprshell.enable = true;
   services.hypridle = {

@@ -1,7 +1,3 @@
-# Edit this configuration file to define what should be installed on
-# your system.  Help is available in the configuration.nix(5) man page
-# and in the NixOS manual (accessible by running ‘nixos-help’).
-
 { config, pkgs, inputs, ... }:
 
 {
@@ -133,6 +129,8 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
+    taskwarrior3
+    timewarrior
     firefox-devedition
     chromium
     neovim
@@ -166,7 +164,6 @@
     ffmpeg
     imagemagick
     tig
-    pueue
     delta
     dyff
     fx
@@ -242,7 +239,6 @@
     bat
     yq-go
     multitail
-    bitwarden
     meld
     atuin
     ripgrep
