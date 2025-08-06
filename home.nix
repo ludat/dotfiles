@@ -33,6 +33,7 @@ in
     NIXOS_OZONE_WL = "1";
   };
 
+  services.blueman-applet.enable = true;
   services.playerctld.enable = true;
   programs.taskwarrior = {
     enable = true;
