@@ -22,6 +22,7 @@ in
     brightnessctl
     pavucontrol
     qalculate-gtk
+    timewarrior
     taskwarrior-tui
     zed-editor
 
@@ -33,6 +34,10 @@ in
   };
 
   services.playerctld.enable = true;
+  programs.taskwarrior = {
+    enable = true;
+    package = pkgs.taskwarrior3;
+  };
 
   services.megasync = {
     enable = true;
@@ -70,8 +75,6 @@ in
       "combi"
     ];
   };
-  # programs.taskwarrior.enable = true;
-  # programs.taskwarrior.package = pkgs.taskwarrior3;
   services.pueue.enable = true;
   programs.hyprlock.enable = true;
   services.hyprshell.enable = true;

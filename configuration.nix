@@ -129,8 +129,6 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-    taskwarrior3
-    timewarrior
     firefox-devedition
     chromium
     neovim
