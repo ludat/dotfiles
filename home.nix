@@ -25,6 +25,9 @@ in
     timewarrior
     taskwarrior-tui
     zed-editor
+    # This is necessary because some programs require the zed binary and
+    # by default it's called zeditor in nixos
+    (pkgs.writeShellScriptBin "zed" "exec -a $0 ${zed-editor}/bin/zeditor $@")
 
     pkgs-unstable.opencode
   ];
