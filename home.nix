@@ -20,10 +20,12 @@ in
     hyprpicker
     libgtop
     brightnessctl
+    jetbrains.idea-community
     pavucontrol
     qalculate-gtk
     timewarrior
     taskwarrior-tui
+    navi
     zed-editor
     # This is necessary because some programs require the zed binary and
     # by default it's called zeditor in nixos
@@ -79,6 +81,7 @@ in
       "combi"
     ];
   };
+  programs.btop.enable = true;
   services.pueue.enable = true;
   programs.hyprlock.enable = true;
   services.hyprshell.enable = true;
@@ -143,8 +146,16 @@ in
       name = "Terminess Nerd Font Mono";
       size = 12;
     };
+    # shellIntegration.mode = null;
+    actionAliases = {
+      "launch_tab" = "launch --cwd=current --type=tab";
+      "launch_window" = "launch --cwd=current --type=os-window";
+    };
     settings = {
       update_check_interval = 0;
+      # shell_integration = "enabled";
+      scrollback_lines = 100000;
+      background_opacity = 0.9;
     };
   };
   wayland.windowManager.hyprland = {
