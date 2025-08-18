@@ -26,13 +26,18 @@ in
     timewarrior
     taskwarrior-tui
     navi
-    zed-editor
+    yt-dlp
     # This is necessary because some programs require the zed binary and
     # by default it's called zeditor in nixos
     (pkgs.writeShellScriptBin "zed" "exec -a $0 ${zed-editor}/bin/zeditor $@")
+    (pkgs.writeShellScriptBin "idea" "exec -a $0 ${pkgs.jetbrains.idea-community}/idea-community/bin/idea $@")
 
     pkgs-unstable.opencode
   ];
+
+  # home.sessionPath = [
+  #   "${pkgs.jetbrains.idea-community}/idea-community/bin/idea"
+  # ];
 
   systemd.user.sessionVariables = {
     NIXOS_OZONE_WL = "1";
@@ -43,6 +48,59 @@ in
   programs.taskwarrior = {
     enable = true;
     package = pkgs.taskwarrior3;
+  };
+
+  programs.zed-editor = {
+    enable = true;
+    extensions = [
+      "haskell"
+      "nix"
+      "helm"
+      "elm"
+    ];
+    userSettings = {
+      agent = {
+        default_profile = "ask";
+        always_allow_tool_actions = true;
+        default_model = {
+          provider = "zed.dev";
+          model = "claude-sonnet-4-thinking";
+        };
+        play_sound_when_agent_done = true;
+      };
+
+      base_keymap = "VSCode";
+      vim_mode = true;
+      ui_font_size = 16;
+      buffer_font_size = 16;
+      tab_size = 2;
+
+      theme = {
+        mode = "system";
+        light = "One Light";
+        dark = "One Dark";
+      };
+
+      file_types = {
+        Helm = [
+          "**/templates/**/*.tpl"
+          "**/templates/**/*.yaml"
+          "**/templates/**/*.yml"
+          "**/helmfile.d/**/*.yaml"
+          "**/helmfile.d/**/*.yml"
+        ];
+      };
+
+      lsp = {
+        hls = {
+          initialization_options = {
+            haskell = {
+              formattingProvider = "stylish-haskell";
+            };
+          };
+        };
+      };
+    };
   };
 
   services.megasync = {
@@ -82,6 +140,19 @@ in
     ];
   };
   programs.btop.enable = true;
+  programs.mpv = {
+    enable = true;
+    bindings = {
+      "tab" = "script-binding uosc/toggle-ui";
+    };
+    scripts = with pkgs.mpvScripts; [
+      uosc
+      thumbfast
+      mpris
+      videoclip
+      smart-copy-paste-2
+    ];
+  };
   services.pueue.enable = true;
   programs.hyprlock.enable = true;
   services.hyprshell.enable = true;

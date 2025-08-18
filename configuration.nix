@@ -267,15 +267,6 @@
 
     yaml-language-server
     aria
-    (mpv.override
-      { scripts = with mpvScripts; [
-        uosc
-        thumbfast
-        mpris
-        videoclip
-        smart-copy-paste-2
-      ]; })
-    yt-dlp
     spotify
     bcc
   ];
