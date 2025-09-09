@@ -35,7 +35,10 @@
   networking.hostName = config.host;
 
   # Enable networking
-  networking.networkmanager.enable = true;
+  networking.networkmanager = {
+    enable = true;
+    wifi.powersave = false;
+  };
   services.unbound = {
     enable = true;
     resolveLocalQueries = true;
