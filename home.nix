@@ -15,14 +15,8 @@ in
     git
     neovim
     curl
-    hyprshot
     wl-clipboard
-    hyprpicker
-    libgtop
-    brightnessctl
     jetbrains.idea-community
-    pavucontrol
-    qalculate-gtk
     timewarrior
     taskwarrior-tui
     navi
@@ -35,16 +29,10 @@ in
     pkgs-unstable.opencode
   ];
 
-  # home.sessionPath = [
-  #   "${pkgs.jetbrains.idea-community}/idea-community/bin/idea"
-  # ];
-
   systemd.user.sessionVariables = {
     NIXOS_OZONE_WL = "1";
   };
 
-  services.blueman-applet.enable = true;
-  services.playerctld.enable = true;
   programs.taskwarrior = {
     enable = true;
     package = pkgs.taskwarrior3;
@@ -125,20 +113,6 @@ in
     };
   };
 
-  programs.rofi = {
-    enable = true;
-    package = pkgs.rofi-wayland;
-    plugins = with pkgs; [
-      rofi-systemd
-    ];
-    modes = [
-      "drun"
-      "window"
-      "recursivebrowser"
-      "run"
-      "combi"
-    ];
-  };
   programs.btop.enable = true;
   programs.mpv = {
     enable = true;
@@ -154,61 +128,6 @@ in
     ];
   };
   services.pueue.enable = true;
-  programs.hyprlock.enable = true;
-  services.hyprshell.enable = true;
-  services.hypridle = {
-    enable = true;
-    settings = {
-      general = {
-        after_sleep_cmd = "hyprctl dispatch dpms on";
-        ignore_dbus_inhibit = false;
-        lock_cmd = "hyprlock";
-      };
-
-      listener = [
-        {
-          timeout = 900;
-          on-timeout = "hyprlock";
-        }
-        {
-          timeout = 1200;
-          on-timeout = "hyprctl dispatch dpms off";
-          on-resume = "hyprctl dispatch dpms on";
-        }
-      ];
-    };
-  };
-  # services.hyprpaper.enable = true; # also crashes
-  services.hyprpolkitagent.enable = true;
-  services.udiskie.enable = true;
-  services.cliphist.enable = true;
-
-  programs.hyprpanel = {
-    enable = true;
-    # dontAssertNotificationDaemons = true;
-  };
-
-  services.dunst = {
-    enable = false;
-    settings = {
-      global = {
-        monitor = "eDP-1";
-        # width = 300;
-        # height = 300;
-        # offset = "30x50";
-        origin = "top-right";
-        # transparency = 10;
-        frame_color = "#eceff1";
-        # font = "Droid Sans 9";
-      };
-
-      urgency_normal = {
-        background = "#37474f";
-        foreground = "#eceff1";
-        timeout = 10;
-      };
-    };
-  };
 
   programs.kitty = {
     enable = true;
@@ -229,38 +148,6 @@ in
       background_opacity = 0.9;
     };
   };
-  wayland.windowManager.hyprland = {
-    enable = true;
-    extraConfig = builtins.readFile ./hyprland/hyprland.conf;
-    plugins = [
-      pkgs.hyprlandPlugins.hy3
-      pkgs.hyprlandPlugins.hyprsplit
-      # this add a weird outline to I'm disabling it for now
-      # pkgs.hyprlandPlugins.hyprspace
-    ];
-    systemd.enable = false;
-  };
-
-  # wayland.windowManager.hyprland.settings = {
-  #   "$mod" = "SUPER";
-  #   bind =
-  #     [
-  #       "$mod, F, exec, firefox"
-  #       ", Print, exec, grimblast copy area"
-  #     ]
-  #     ++ (
-  #       # workspaces
-  #       # binds $mod + [shift +] {1..9} to [move to] workspace {1..9}
-  #       builtins.concatLists (builtins.genList (i:
-  #           let ws = i + 1;
-  #           in [
-  #             "$mod, code:1${toString i}, workspace, ${toString ws}"
-  #             "$mod SHIFT, code:1${toString i}, movetoworkspace, ${toString ws}"
-  #           ]
-  #         )
-  #         9)
-  #     );
-  # };
 
   home.file = {
     ".zshrc" = {

@@ -6,6 +6,23 @@
   home-manager.useGlobalPkgs = true;
   home-manager.useUserPackages = true;
   home-manager.sharedModules = [];
-  home-manager.users.ludat = ./home.nix;
   home-manager.extraSpecialArgs = specialArgs;
+
+  specialisation."hyprland".configuration = {
+    home-manager.users.ludat =  {
+      imports = [
+        ./home.nix
+        ./home-hyprland.nix
+      ];
+    };
+
+  };
+
+  specialisation."plasma".configuration = {
+    home-manager.users.ludat =  {
+      imports = [
+        ./home.nix
+      ];
+    };
+  };
 }
