@@ -270,7 +270,7 @@
       fd
       # nixpkgs-stable.legacyPackages.x86_64-linux.emacs
       # emacs
-      emacs30-pgtk
+      emacs-pgtk
       gnuplot
       ispell
       ncdu
@@ -342,6 +342,14 @@
     };
     environment.pathsToLink = [ "/share/zsh" ];
 
+    fonts.packages = with pkgs; [
+      nerd-fonts.fira-code
+      nerd-fonts.fira-mono
+      nerd-fonts.terminess-ttf
+      noto-fonts
+      hack-font
+    ];
+
     # This value determines the NixOS release from which the default
     # settings for stateful data, like file locations and database versions
     # on your system were taken. It‘s perfectly fine and recommended to leave
@@ -359,16 +367,7 @@
 
       services.gnome.gnome-keyring.enable = true;
       services.upower.enable = true;
-      fonts = {
-        fontDir.enable = true;
-        packages = with pkgs; [
-          nerd-fonts.fira-code
-          nerd-fonts.fira-mono
-          nerd-fonts.terminess-ttf
-          noto-fonts
-          hack-font
-        ];
-      };
+      fonts.fontDir.enable = true;
       services.udisks2.enable = true;
       services.locate.enable = true;
       programs.hyprland.enable = true;
@@ -383,6 +382,12 @@
       environment.systemPackages = with pkgs; [
         wtype
       ];
+    };
+
+    specialisation."cosmic".configuration = {
+      environment.etc."specialisation".text = "cosmic";
+      services.displayManager.cosmic-greeter.enable = true;
+      services.desktopManager.cosmic.enable = true;
     };
 
     specialisation."plasma".configuration = {

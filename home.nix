@@ -1,9 +1,18 @@
-{ config, pkgs, lib, pkgs-unstable, ... }:
+{
+  config,
+  pkgs,
+  lib,
+  pkgs-unstable,
+  ...
+}:
 
 let
   configDir = "/home/ludat/dotfiles";
-  mkConfigLink = path: config.lib.file.mkOutOfStoreSymlink
-    (toString (configDir + lib.removePrefix (toString ./.) (toString path)));
+  mkConfigLink =
+    path:
+    config.lib.file.mkOutOfStoreSymlink (
+      toString (configDir + lib.removePrefix (toString ./.) (toString path))
+    );
 in
 {
   imports = [
@@ -23,10 +32,11 @@ in
     yt-dlp
     # This is necessary because some programs require the zed binary and
     # by default it's called zeditor in nixos
-    (pkgs.writeShellScriptBin "zed" "exec -a $0 ${zed-editor}/bin/zeditor $@")
-    (pkgs.writeShellScriptBin "idea" "exec -a $0 ${pkgs.jetbrains.idea-community}/idea-community/bin/idea $@")
+    (writeShellScriptBin "zed" "exec -a $0 ${zed-editor}/bin/zeditor $@")
+    (writeShellScriptBin "idea" "exec -a $0 ${jetbrains.idea-community}/idea-community/bin/idea $@")
 
     pkgs-unstable.opencode
+    pkgs-unstable.claude-code
   ];
 
   systemd.user.sessionVariables = {
@@ -38,14 +48,10 @@ in
     package = pkgs.taskwarrior3;
   };
 
+  services.playerctld.enable = true;
+
   programs.zed-editor = {
     enable = true;
-    extensions = [
-      "haskell"
-      "nix"
-      "helm"
-      "elm"
-    ];
     userSettings = {
       agent = {
         default_profile = "ask";
@@ -163,7 +169,7 @@ in
     ".config/nvim" = {
       source = mkConfigLink ./nvim;
       onChange = ''
-        export PATH=$PATH:${lib.makeBinPath [pkgs.git]}
+        export PATH=$PATH:${lib.makeBinPath [ pkgs.git ]}
         cd .config/nvim
         if [ ! -f autoload/plug.vim ]; then
           ${pkgs.curl}/bin/curl -fLo autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim;

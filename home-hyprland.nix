@@ -49,6 +49,7 @@ in
       package = pkgs.flat-remix-gtk;
       name = "Flat-Remix-GTK-Grey-Darkest";
     };
+    colorScheme = "dark";
 
     iconTheme = {
       package = pkgs.adwaita-icon-theme;
