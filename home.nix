@@ -20,7 +20,7 @@ in
 
   home.username = "ludat";
   home.homeDirectory = "/home/ludat";
-  home.packages = with pkgs; [
+  home.packages = with pkgs-unstable; [
     git
     neovim
     curl
@@ -35,8 +35,14 @@ in
     (writeShellScriptBin "zed" "exec -a $0 ${zed-editor}/bin/zeditor $@")
     (writeShellScriptBin "idea" "exec -a $0 ${jetbrains.idea-community}/idea-community/bin/idea $@")
 
-    pkgs-unstable.opencode
-    pkgs-unstable.claude-code
+    opencode
+    claude-code
+    # https://github.com/NixOS/nixpkgs/issues/443704
+    # playwright-mcp
+    (writeShellScriptBin "mcp-server-playwright" ''
+      export PWMCP_PROFILES_DIR_FOR_TEST="$PWD/.pwmcp-profiles"
+      exec ${playwright-mcp}/bin/mcp-server-playwright "$@"
+    '')
   ];
 
   systemd.user.sessionVariables = {
@@ -45,13 +51,14 @@ in
 
   programs.taskwarrior = {
     enable = true;
-    package = pkgs.taskwarrior3;
+    package = pkgs-unstable.taskwarrior3;
   };
 
   services.playerctld.enable = true;
 
   programs.zed-editor = {
     enable = true;
+    package = pkgs-unstable.zed-editor;
     userSettings = {
       agent = {
         default_profile = "ask";

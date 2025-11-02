@@ -13,29 +13,18 @@
   home-manager.sharedModules = [ ];
   home-manager.extraSpecialArgs = specialArgs;
 
-  specialisation."hyprland".configuration = {
-    home-manager.users.ludat = {
-      imports = [
-        ./home.nix
-        ./home-hyprland.nix
-      ];
-    };
-
+  home-manager.users.ludat = {
+    imports = [
+      ./home.nix
+    ];
   };
 
-  specialisation."cosmic".configuration = {
-    home-manager.users.ludat = {
-      imports = [
-        ./home.nix
-      ];
-    };
-  };
-
-  specialisation."plasma".configuration = {
-    home-manager.users.ludat = {
-      imports = [
-        ./home.nix
-      ];
-    };
-  };
+  # specialisation."hyprland".configuration = {
+  #   home-manager.users.ludat = {
+  #     imports = [
+  #       ./home.nix
+  #       ./home-hyprland.nix
+  #     ];
+  #   };
+  # };
 }
