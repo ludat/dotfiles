@@ -46,7 +46,15 @@ in
   ];
 
   systemd.user.sessionVariables = {
+    ELECTRON_OZONE_PLATFORM_HINT = "wayland";
+    GDK_BACKEND = "wayland,x11";
     NIXOS_OZONE_WL = "1";
+    OZONE_PLATFORM = "wayland";
+    QT_QPA_PLATFORM = "wayland";
+
+    # for games running in wayland
+    SDL_VIDEODRIVER = "wayland";
+    SDL_VIDEO_DRIVER = "wayland";
   };
 
   programs.taskwarrior = {
