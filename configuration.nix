@@ -157,6 +157,21 @@
     # $ nix search wget
     environment.systemPackages = with pkgs; [
       firefox-devedition
+      (
+        let
+          base = appimageTools.defaultFhsEnvArgs;
+        in
+        buildFHSEnv (
+          base
+          // {
+            name = "fhs";
+            targetPkgs = ps: (base.targetPkgs ps) ++ [ pkg-config ];
+            profile = "export FHS=1";
+            runScript = "zsh";
+            extraOutputsToInstall = [ "dev" ];
+          }
+        )
+      )
       evince
       chromium
       neovim
@@ -239,6 +254,7 @@
       tree
       up
       unp
+      unzip
       zip
       hurl
       font-awesome
