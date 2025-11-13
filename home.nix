@@ -28,6 +28,7 @@ in
     jetbrains.idea-community
     timewarrior
     taskwarrior-tui
+    zbar
     navi
     yt-dlp
     # This is necessary because some programs require the zed binary and
