@@ -23,10 +23,6 @@
 [diff]
     tool = meld
     algorithm = histogram
-
-[gui]
-    editor = kate
-
 [init]
     defaultBranch = main
 
