@@ -276,7 +276,6 @@
       kubectl-explore
       kubelogin-oidc
       kubernetes-helm
-      (google-cloud-sdk.withExtraComponents [ google-cloud-sdk.components.gke-gcloud-auth-plugin ])
       stern
       jq
       visidata
@@ -307,6 +306,7 @@
       kdePackages.kalk
       kdePackages.kolourpaint
       kdePackages.kdenlive
+      gimp
       wtype
       iw
       wirelesstools
