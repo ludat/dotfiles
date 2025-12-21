@@ -25,16 +25,17 @@ in
     neovim
     curl
     wl-clipboard
-    jetbrains.idea-community
+    jetbrains.idea
     timewarrior
     taskwarrior-tui
     zbar
     navi
     yt-dlp
+    telegram-desktop
+    apacheHttpd # for htpasswd
     # This is necessary because some programs require the zed binary and
     # by default it's called zeditor in nixos
-    (writeShellScriptBin "zed" "exec -a $0 ${zed-editor}/bin/zeditor $@")
-    (writeShellScriptBin "idea" "exec -a $0 ${jetbrains.idea-community}/idea-community/bin/idea $@")
+    (writeShellScriptBin "zed" "exec -a $0 ${zed-editor}/bin/zeditor \"$@\"")
 
     opencode
     claude-code
