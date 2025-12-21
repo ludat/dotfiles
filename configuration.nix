@@ -192,7 +192,7 @@
       #
       simplescreenrecorder
       dragon-drop
-      helvum
+      pwvucontrol
       lshw
       pciutils
       usbutils
