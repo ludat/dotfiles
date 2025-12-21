@@ -58,29 +58,20 @@
   hardware.cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
   hardware.nvidia = {
     open = true;
-    powerManagement.enable = true;
+    # powerManagement.enable = true;
     prime = {
-      sync.enable = false;
-      offload.enable = true;
-      offload.enableOffloadCmd = true;
+      sync.enable = true;
+      offload.enable = false;
+      offload.enableOffloadCmd = false;
       nvidiaBusId = "PCI:01:0:0";
       amdgpuBusId = "PCI:05:0:0";
     };
   };
-  specialisation."performance".configuration = {
+  specialisation."travel".configuration = {
     hardware.nvidia.prime = {
-      sync.enable = false;
-      offload.enable = true;
-      offload.enableOffloadCmd = true;
+      sync.enable = lib.mkForce false;
+      offload.enable = lib.mkForce true;
+      offload.enableOffloadCmd = lib.mkForce true;
     };
-  };
-  specialisation."lowpower".configuration = {
-    boot.blacklistedKernelModules = [
-      "nvidia"
-      "nvidiafb"
-      "nvidia-drm"
-      "nvidia-uvm"
-      "nvidia-modeset"
-    ];
   };
 }
