@@ -176,6 +176,12 @@ zstyle ':completion:*:complete:*' list-colors 'no=00' 'fi=00' 'di=01;34' 'ln=01;
 
 # compinit
 # zinit cdreplay -q
+if test -n "$KITTY_INSTALLATION_DIR"; then
+    export KITTY_SHELL_INTEGRATION="enabled"
+    autoload -Uz -- "$KITTY_INSTALLATION_DIR"/shell-integration/zsh/kitty-integration
+    kitty-integration
+    unfunction kitty-integration
+fi
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh

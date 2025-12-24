@@ -31,6 +31,9 @@
       };
     };
 
+    # Allow unfree packages
+    nixpkgs.config.allowUnfree = true;
+
     # Bootloader.
     boot.kernelPackages = pkgs.linuxPackages_latest;
     boot.kernel.sysctl = {
@@ -115,7 +118,6 @@
     services.printing.enable = true;
 
     # Enable sound with pipewire.
-    services.pulseaudio.enable = false;
     security.rtkit.enable = true;
     services.pipewire = {
       enable = true;
@@ -125,10 +127,6 @@
       pulse.enable = true;
       # If you want to use JACK applications, uncomment this
       #jack.enable = true;
-
-      # use the example session manager (no others are packaged yet so this is enabled by default,
-      # no need to redefine it in your config for now)
-      #media-session.enable = true;
     };
 
     # Define a user account. Don't forget to set a password with ‘passwd’.
@@ -150,13 +148,9 @@
       ];
     };
 
-    # Allow unfree packages
-    nixpkgs.config.allowUnfree = true;
-
     # List packages installed in system profile. To search, run:
     # $ nix search wget
     environment.systemPackages = with pkgs; [
-      firefox-devedition
       (
         let
           base = appimageTools.defaultFhsEnvArgs;
@@ -172,9 +166,6 @@
           }
         )
       )
-      evince
-      chromium
-      neovim
       pwgen
       bc
       logseq
@@ -183,23 +174,12 @@
       moreutils
       termdown
       file
-      tmux
-      ranger
-      yazi
-      # for previews for yazi
-      poppler
-      ffmpegthumbnailer
-      #
-      simplescreenrecorder
-      dragon-drop
       pwvucontrol
       lshw
       pciutils
       usbutils
       inxi
       wget
-      xorg.xkill
-      tmux
       openssh
       git
       ffmpeg
@@ -214,6 +194,7 @@
       zsh
       nushell
       fasd
+      fzf
       git-cola
 
       xsel

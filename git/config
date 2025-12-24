@@ -43,3 +43,5 @@
 [rerere]
     enabled = true
     autoUpdate = true
+[gui]
+	editor = cosmic-edit

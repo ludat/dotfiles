@@ -23,6 +23,17 @@ in
   home.packages = with pkgs-unstable; [
     git
     neovim
+    chromium
+    evince
+    firefox-devedition
+    ranger
+    dragon-drop
+    zoxide
+    yazi
+    # for previews for yazi
+    poppler
+    ffmpegthumbnailer
+    #
     curl
     wl-clipboard
     jetbrains.idea
@@ -152,6 +163,38 @@ in
   };
   services.pueue.enable = true;
 
+  programs.tmux = {
+    enable = true;
+    package = pkgs-unstable.tmux;
+    aggressiveResize = true;
+    baseIndex = 1;
+    clock24 = true;
+    escapeTime = 0;
+    historyLimit = 50000;
+    mouse = true;
+    plugins = with pkgs-unstable.tmuxPlugins; [
+      # cpu
+      yank
+      # ctrlw
+      logging
+      open
+      tmux-sessionx
+      # fuzzback
+      extrakto
+      # fingers # fuzzy find
+      minimal-tmux-status
+    ];
+
+    shortcut = "Space";
+    sensibleOnTop = true;
+    terminal = "xterm-kitty";
+    extraConfig = ''
+      bind '"' split-window -c "#{pane_current_path}"
+      bind % split-window -h -c "#{pane_current_path}"
+      bind c new-window -c "#{pane_current_path}"
+    '';
+  };
+
   programs.kitty = {
     enable = true;
     themeFile = "Argonaut";
@@ -162,13 +205,26 @@ in
     # shellIntegration.mode = null;
     actionAliases = {
       "launch_tab" = "launch --cwd=current --type=tab";
-      "launch_window" = "launch --cwd=current --type=os-window";
+      "launch_window" = "launch --cwd=current --type=window";
     };
     settings = {
       update_check_interval = 0;
       # shell_integration = "enabled";
       scrollback_lines = 100000;
       background_opacity = 0.9;
+      scrollback_pager = "nvim -i NONE -M -c 'normal G' -c 'map q :q!<CR>' -c 'set laststatus=0 nospell syntax=' -";
+    };
+    keybindings = {
+      "ctrl+tab" = "next_tab";
+      "ctrl+shift+tab" = "prev_tab";
+      "ctrl+shift+t" = "new_tab_with_cwd";
+      "ctrl+q" = "close_tab";
+      # "ctrl+shift+z" = "neighboring_window 1";
+      "ctrl+shift+s" = "goto_session";
+      "ctrl+s" = "save_as_session --use-foreground-process --relocatable .";
+      # "ctrl+shift+h"   = ''
+      #   launch --type=overlay --stdin-source=@screen_scrollback 
+      #   '';
     };
   };
 
@@ -183,17 +239,7 @@ in
       '';
     };
 
-    ".config/nvim" = {
-      source = mkConfigLink ./nvim;
-      onChange = ''
-        export PATH=$PATH:${lib.makeBinPath [ pkgs.git ]}
-        cd .config/nvim
-        if [ ! -f autoload/plug.vim ]; then
-          ${pkgs.curl}/bin/curl -fLo autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim;
-          ${pkgs.neovim}/bin/nvim --headless +'PlugInstall --sync' +qall;
-        fi
-      '';
-    };
+    ".config/nvim".source = mkConfigLink ./nvim;
 
     ".doom.d" = {
       source = mkConfigLink ./doom;
@@ -202,13 +248,6 @@ in
       '';
     };
 
-    ".tmux.conf".source = mkConfigLink ./tmux/tmux.conf;
-    ".tmux" = {
-      source = mkConfigLink ./tmux/tmux;
-      onChange = ''
-        if [ ! -d ~/.tmux/plugins/tpm ]; then ${pkgs.git}/bin/git clone https://github.com/tmux-plugins/tpm .tmux/plugins/tpm; fi
-      '';
-    };
     ".local/bin".source = mkConfigLink ./bin;
     ".stack/hooks".source = mkConfigLink stack/hooks;
     ".stack/global-project".source = mkConfigLink stack/global-project;
