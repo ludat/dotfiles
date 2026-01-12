@@ -57,6 +57,11 @@ require("lazy").setup({
     'nvim-lualine/lualine.nvim',
     dependencies = { 'nvim-tree/nvim-web-devicons' }
   },
+  {
+  'nvim-treesitter/nvim-treesitter',
+    lazy = false,
+    build = ':TSUpdate'
+  },
 
   -- Git
   { 'tpope/vim-fugitive' },
@@ -167,6 +172,13 @@ require("lazy").setup({
       { "<leader>gg", "<cmd>Neogit<cr>", desc = "Show Neogit UI" }
     }
   },
+  {
+    "qvalentin/helm-ls.nvim",
+    ft = "helm",
+    opts = {
+        -- leave empty or see below
+    },
+  },
 })
 
 -- Use Enter as colon
@@ -201,6 +213,18 @@ vim.keymap.set('n', '<leader>d', vim.cmd.bdelete)
 -- Forgot to sudo
 vim.api.nvim_create_user_command('W', 'w !sudo tee % > /dev/null', {})
 
+-- Pager for kitty (should be deleted in version 0.12
+vim.api.nvim_create_user_command('TermHl', function()
+          local b = vim.api.nvim_create_buf(false, true)
+          local chan = vim.api.nvim_open_term(b, {})
+          vim.api.nvim_chan_send(chan, table.concat(vim.api.nvim_buf_get_lines(0, 0, -1, false), '\n'))
+          vim.api.nvim_win_set_buf(0, b)
+        end, { desc = 'Highlights ANSI termcodes in curbuf' }
+)
+
+vim.lsp.config["helm_ls"] = {
+  root_markers = { { "Chart.yaml" }, ".git" },
+}
 
 -- Move blocks of text around
 vim.keymap.set('n', '<C-j>', ':m+<CR>==')

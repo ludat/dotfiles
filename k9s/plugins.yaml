@@ -1,0 +1,106 @@
+plugins:
+  argocd-sync:
+    shortCut: "s"
+    description: Sync ArgoCD Application
+    scopes:
+      - apps
+    command: argocd
+    args:
+    - app
+    - sync
+    - $NAME
+    - --app-namespace
+    - $NAMESPACE
+    background: false
+    confirm: true
+  argocd-diff:
+    shortCut: Shift-D
+    description: Diff ArgoCD Application
+    scopes:
+      - apps
+    command: bash
+    args:
+    - -c
+    - |
+      argocd app diff $NAME --app-namespace $NAMESPACE | $PAGER
+    background: false
+    confirm: false
+
+  refresh-apps:
+    shortCut: Shift-R
+    confirm: false
+    scopes:
+      - apps
+    description: Refresh a argocd app hard
+    command: kubectl
+    background: false
+    args:
+      - annotate
+      - applications
+      - -n
+      - $NAMESPACE
+      - $NAME
+      - argocd.argoproj.io/refresh=hard
+
+  refresh-appset:
+    shortCut: Shift-R
+    confirm: false
+    scopes:
+      - appsets
+    description: Refresh argocd appset
+    command: kubectl
+    background: false
+    args:
+      - annotate
+      - appsets
+      - -n
+      - $NAMESPACE
+      - $NAME
+      - argocd.argoproj.io/application-set-refresh=refresh
+
+  disable-auto-sync:
+    shortCut: Shift-J
+    confirm: false
+    scopes:
+      - apps
+    description: Disable argocd sync
+    command: kubectl
+    background: false
+    args:
+      - patch
+      - applications
+      - -n
+      - $NAMESPACE
+      - $NAME
+      - --type=merge
+      - '-p={"spec":{"syncPolicy":{"automated":{"enabled":true}}}}'
+
+  enable-auto-sync:
+    shortCut: Shift-B
+    confirm: false
+    scopes:
+      - apps
+    description: Enable argocd sync
+    command: kubectl
+    background: false
+    args:
+      - patch
+      - applications
+      - -n
+      - $NAMESPACE
+      - $NAME
+      - --type=merge
+      - '-p={"spec":{"syncPolicy":{"automated":{"enabled":true}}}}'
+
+  debug:
+    shortCut: Shift-D
+    description: Add debug container
+    dangerous: true
+    scopes:
+      - containers
+    command: bash
+    background: false
+    confirm: true
+    args:
+      - -c
+      - kubectl debug -it --context "$CONTEXT" -n="$NAMESPACE" "$POD" --target="$NAME" --image=nicolaka/netshoot:v0.14 --profile=sysadmin --share-processes -- bash

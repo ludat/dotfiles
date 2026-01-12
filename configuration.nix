@@ -296,6 +296,14 @@
       aria2
       spotify
       bcc
+
+      # cosmic
+      cosmic-ext-applet-weather
+      cosmic-ext-applet-minimon
+      cosmic-ext-applet-privacy-indicator
+      tasks
+      examine
+      quick-webapps
     ];
 
     environment.variables = {

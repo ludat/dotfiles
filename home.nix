@@ -26,6 +26,7 @@ in
     chromium
     evince
     firefox-devedition
+    witr
     ranger
     dragon-drop
     zoxide
@@ -195,6 +196,11 @@ in
     '';
   };
 
+  programs.ghostty = {
+    enable = true;
+    package = pkgs-unstable.ghostty;
+  };
+
   programs.kitty = {
     enable = true;
     themeFile = "Argonaut";
@@ -212,12 +218,13 @@ in
       # shell_integration = "enabled";
       scrollback_lines = 100000;
       background_opacity = 0.9;
-      scrollback_pager = "nvim -i NONE -M -c 'normal G' -c 'map q :q!<CR>' -c 'set laststatus=0 nospell syntax=' -";
+      scrollback_pager = "nvim --cmd 'set eventignore=FileType' +'nnoremap q ZQ' +'set nomodified readonly nolist' +'TermHl' +'$' -";
     };
     keybindings = {
       "ctrl+tab" = "next_tab";
       "ctrl+shift+tab" = "prev_tab";
       "ctrl+shift+t" = "new_tab_with_cwd";
+      "ctrl+shift+enter" = "new_window_with_cwd";
       "ctrl+q" = "close_tab";
       # "ctrl+shift+z" = "neighboring_window 1";
       "ctrl+shift+s" = "goto_session";
