@@ -22,6 +22,7 @@ in
   home.homeDirectory = "/home/ludat";
   home.packages = with pkgs-unstable; [
     git
+    git-lfs
     neovim
     chromium
     evince
