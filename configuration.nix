@@ -499,6 +499,23 @@
       dataDir = "/home/ludat/Documents";
       openDefaultPorts = true;
     };
+
+    systemd.services.scheduled-shutdown = {
+      description = "Scheduled system shutdown";
+      serviceConfig = {
+        Type = "oneshot";
+        ExecStart = "${pkgs.systemd}/bin/systemctl poweroff";
+      };
+    };
+
+    systemd.timers.scheduled-shutdown = {
+      description = "Daily shutdown at 2am";
+      wantedBy = [ "timers.target" ];
+      timerConfig = {
+        OnCalendar = "*-*-* 02:00:00";
+        Persistent = true;
+      };
+    };
     environment.pathsToLink = [ "/share/zsh" ];
 
     fonts.packages = with pkgs; [
