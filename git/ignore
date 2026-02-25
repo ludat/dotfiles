@@ -30,6 +30,9 @@ tramp
 .envrc
 .direnv
 # }}}
+# claude {{{
+**/.claude/settings.local.json
+# }}}
 # }}}
 # Languages {{{
 # Javascript {{{

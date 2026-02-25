@@ -28,6 +28,7 @@ in
     evince
     firefox-devedition
     witr
+    hl-log-viewer
     ranger
     dragon-drop
     zoxide

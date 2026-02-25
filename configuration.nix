@@ -96,10 +96,6 @@
       LC_TIME = "es_AR.UTF-8";
     };
 
-    services.displayManager.sddm.enable = true;
-
-    # Configure keymap in X11
-
     # Enable the X11 windowing system.
     services.xserver = {
       enable = true;
@@ -239,7 +235,7 @@
       zip
       hurl
       font-awesome
-      xorg.xev
+      xev
       libnotify
       libreoffice
       binutils
@@ -357,19 +353,19 @@
         systemd
 
         # My own additions
-        xorg.libXcomposite
-        xorg.libXtst
-        xorg.libXrandr
-        xorg.libXext
-        xorg.libX11
-        xorg.libXfixes
+        libXcomposite
+        libXtst
+        libXrandr
+        libXext
+        libX11
+        libXfixes
+        libxcb
+        libXdamage
+        libxshmfence
+        libXxf86vm
         libGL
         libva
         pipewire
-        xorg.libxcb
-        xorg.libXdamage
-        xorg.libxshmfence
-        xorg.libXxf86vm
         libelf
 
         # Required
@@ -389,13 +385,13 @@
         # glibc_multi.bin # Seems to cause issue in ARM
 
         # # Without these it silently fails
-        xorg.libXinerama
-        xorg.libXcursor
-        xorg.libXrender
-        xorg.libXScrnSaver
-        xorg.libXi
-        xorg.libSM
-        xorg.libICE
+        libXinerama
+        libXcursor
+        libXrender
+        libXScrnSaver
+        libXi
+        libSM
+        libICE
         gnome2.GConf
         nspr
         nss
@@ -421,8 +417,8 @@
         # other issue: (Unity:377230): GLib-GIO-CRITICAL **: 21:09:04.706: g_dbus_proxy_call_sync_internal: assertion 'G_IS_DBUS_PROXY (proxy)' failed
 
         # Verified games requirements
-        xorg.libXt
-        xorg.libXmu
+        libXt
+        libXmu
         libogg
         libvorbis
         SDL
@@ -456,7 +452,7 @@
         libgcrypt
         libvpx
         librsvg
-        xorg.libXft
+        libXft
         libvdpau
         # ...
         # Some more libraries that I needed to run programs
@@ -512,10 +508,11 @@
       description = "Daily shutdown at 2am";
       wantedBy = [ "timers.target" ];
       timerConfig = {
-        OnCalendar = "*-*-* 02:00:00";
+        OnCalendar = "*-*-* 04:00:00";
         Persistent = true;
       };
     };
+
     environment.pathsToLink = [ "/share/zsh" ];
 
     fonts.packages = with pkgs; [
@@ -534,32 +531,6 @@
     # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
     system.stateVersion = "24.11"; # Did you read the comment?
 
-    # specialisation."hyprland".configuration = {
-    #   environment.etc."specialisation".text = "hyprland";
-    #   services.displayManager.sddm.enable = true;
-    #   services.displayManager.sddm.wayland.enable = true;
-
-    #   services.blueman.enable = true;
-
-    #   services.gnome.gnome-keyring.enable = true;
-    #   services.upower.enable = true;
-    #   fonts.fontDir.enable = true;
-    #   services.udisks2.enable = true;
-    #   services.locate.enable = true;
-    #   programs.hyprland.enable = true;
-    #   services.hypridle.enable = true;
-    #   programs.hyprland.withUWSM = true;
-
-    #   xdg.portal = {
-    #     enable = true;
-    #     extraPortals = with pkgs; [ xdg-desktop-portal-hyprland ];
-    #   };
-
-    #   environment.systemPackages = with pkgs; [
-    #     wtype
-    #   ];
-    # };
-
     services.displayManager.cosmic-greeter.enable = true;
     services.desktopManager.cosmic.enable = true;
 
@@ -575,5 +546,27 @@
       services.displayManager.sddm.wayland.enable = true;
       services.desktopManager.plasma6.enable = true;
     };
+
+    # specialisation."gnome".configuration = {
+    #   environment.etc."specialisation".text = "gnome";
+    #
+    #   # Undo configurations from cosmic
+    #   services.displayManager.cosmic-greeter.enable = lib.mkForce false;
+    #   services.desktopManager.cosmic.enable = lib.mkForce false;
+    #
+    #   services.displayManager.gdm.enable = true;
+    #   services.desktopManager.gnome.enable = true;
+    #
+    #   services.gnome.games.enable = false;
+    #   environment.systemPackages = with pkgs; [
+    #     gnomeExtensions.appindicator
+    #     gnomeExtensions.paperwm
+    #
+    #     # gnomeExtensions.blur-my-shell
+    #     # gnomeExtensions.just-perfection
+    #     # gnomeExtensions.arc-menu
+    #   ];
+    #   hardware.sensor.iio.enable = true;
+    # };
   };
 }
