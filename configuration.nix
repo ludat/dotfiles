@@ -205,19 +205,9 @@
       sqlitestudio
       pgcli
       zlib.dev
-      just
-      hyperfine
-      ghcid
       docker-compose
-      lazydocker
       nodejs
       yarn
-      vscodium
-      xh
-      bruno
-      eza
-      watchexec
-      doggo
       openssl
       httptap
       ldns
@@ -241,30 +231,7 @@
       binutils
       unixtools.xxd
       unixtools.netstat
-      lsof
-      hwatch
-      updog
 
-      # kubernetes stuff
-      k9s
-      kubectl
-      kubectl-cnpg
-      kubectl-klock
-      kubectl-explore
-      kubelogin-oidc
-      kubernetes-helm
-      stern
-      jq
-      visidata
-      qsv
-      bat
-      yq-go
-      multitail
-      meld
-      atuin
-      ripgrep
-      sd
-      fd
       # nixpkgs-stable.legacyPackages.x86_64-linux.emacs
       # emacs
       gmp.dev
@@ -289,7 +256,6 @@
       wirelesstools
       yaml-language-server
       nil
-      aria2
       spotify
       bcc
 

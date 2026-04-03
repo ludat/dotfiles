@@ -49,16 +49,23 @@
          "default"
          entry
          "* %?"
-         :target (file+head "%<%Y-%m-%d>.org" "%<%Y-%m-%d>\n"))))
+         :target (file+head "%<%Y-%m-%d>.org" "#+title: %<%Y-%m-%d>\n"))))
 
 (setq org-roam-capture-templates
       '(("d"
          "default"
          plain
          "%?"
-         :target (file+head "%<%Y%m%d%H%M%S>-${slug}.org" "${title}\n")
+         :target (file+head "%<%Y%m%d%H%M%S>-${slug}.org" "#+title: ${title}\n")
          :unnarrowed t)))
 
+(setq org-roam-completion-everywhere t)
+
+(setq org-roam-mode-sections
+      (list #'org-roam-backlinks-section
+            #'org-roam-reflinks-section
+            #'org-roam-unlinked-references-section
+            ))
 ;; (("d" "default" plain "%?" :target
 ;;   (file+head "%<%Y%m%d%H%M%S>-${slug}.org" "#+title: ${title}\n")
 ;;   :unnarrowed t))

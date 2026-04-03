@@ -22,17 +22,52 @@ in
   home.homeDirectory = "/home/ludat";
   home.packages = with pkgs-unstable; [
     git
+    dysk
     git-lfs
     neovim
     chromium
     evince
+    vscodium
     firefox-devedition
     witr
     hl-log-viewer
     ranger
     dragon-drop
     zoxide
+    lazydocker
+    just
+    hyperfine
+    ghcid
     yazi
+    xh
+    bruno
+    lsof
+    hwatch
+    updog
+    eza
+    watchexec
+    doggo
+    aria2
+    # kubernetes stuff
+    k9s
+    kubectl
+    kubectl-cnpg
+    kubectl-klock
+    kubectl-explore
+    kubelogin-oidc
+    kubernetes-helm
+    stern
+    jq
+    visidata
+    qsv
+    bat
+    yq-go
+    multitail
+    meld
+    atuin
+    ripgrep
+    sd
+    fd
     # for previews for yazi
     poppler
     ffmpegthumbnailer
@@ -53,6 +88,7 @@ in
 
     opencode
     claude-code
+    lazygit
     # https://github.com/NixOS/nixpkgs/issues/443704
     # playwright-mcp
     (writeShellScriptBin "mcp-server-playwright" ''
