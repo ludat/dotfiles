@@ -1,0 +1,22 @@
+name: Renovate
+on:
+  schedule:
+    - cron: '0 6 * * 1'
+  workflow_dispatch:
+
+jobs:
+  renovate:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+      issues: write
+      packages: write
+    steps:
+      - uses: actions/checkout@v5
+      - uses: renovatebot/github-action@v46.1.5
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+        env:
+          RENOVATE_REPOSITORIES: ${{ github.repository }}
+          # LOG_LEVEL: 'debug'
