@@ -35,6 +35,7 @@ in
     dragon-drop
     zoxide
     lazydocker
+    pgcli
     just
     hyperfine
     ghcid
@@ -78,6 +79,8 @@ in
     timewarrior
     taskwarrior-tui
     zbar
+    logseq
+    joplin
     navi
     yt-dlp
     telegram-desktop
@@ -192,7 +195,7 @@ in
     bindings = {
       "tab" = "script-binding uosc/toggle-ui";
     };
-    scripts = with pkgs.mpvScripts; [
+    scripts = with pkgs-unstable.mpvScripts; [
       uosc
       thumbfast
       mpris

@@ -138,6 +138,7 @@
         "wireshark"
         "unbound"
         "libvirtd"
+        "openrazer"
       ];
       packages = with pkgs; [
         #  thunderbird
@@ -147,24 +148,32 @@
     # List packages installed in system profile. To search, run:
     # $ nix search wget
     environment.systemPackages = with pkgs; [
-      (
-        let
-          base = appimageTools.defaultFhsEnvArgs;
-        in
-        buildFHSEnv (
-          base
-          // {
-            name = "fhs";
-            targetPkgs = ps: (base.targetPkgs ps) ++ [ pkg-config ];
-            profile = "export FHS=1";
-            runScript = "zsh";
-            extraOutputsToInstall = [ "dev" ];
-          }
-        )
-      )
+      # (
+      #   let
+      #     base = appimageTools.defaultFhsEnvArgs;
+      #   in
+      #   buildFHSEnv (
+      #     base
+      #     // {
+      #       name = "fhs";
+      #       targetPkgs = ps: (base.targetPkgs ps) ++ [
+      #         pkg-config
+      #         pkgs.linux_latest.dev # Notice: ".dev" sub attribute brings the magic.
+      #         gcc
+      #         gnumake
+      #         gnupg
+      #         zlib.dev
+      #         gmp.dev
+      #         ncurses
+      #       ];
+      #       profile = "export FHS=1";
+      #       runScript = "zsh";
+      #       extraOutputsToInstall = [ "dev" ];
+      #     }
+      #   )
+      # )
       pwgen
       bc
-      logseq
       tldr
       parallel
       moreutils
@@ -180,6 +189,7 @@
       git
       ffmpeg
       imagemagick
+
       tig
       delta
       dyff
@@ -203,7 +213,6 @@
       postgresql
       sqlite
       sqlitestudio
-      pgcli
       zlib.dev
       docker-compose
       nodejs
@@ -237,7 +246,7 @@
       gmp.dev
       emacs-pgtk
       gnuplot
-      ispell
+      (hunspell.withDicts (dicts: with dicts; [ en-us es-ar ]))
       ncdu
       nix-diff
       dix
@@ -266,6 +275,9 @@
       tasks
       examine
       quick-webapps
+
+      # razer
+      polychromatic
     ];
 
     environment.variables = {
@@ -300,7 +312,7 @@
     };
     programs.direnv.enable = true;
     programs.nix-ld = {
-      enable = true;
+      enable = false;
       libraries = with pkgs; [
         # List by default
         zlib
@@ -462,6 +474,10 @@
       openDefaultPorts = true;
     };
 
+    # Razer mouse
+    hardware.openrazer.enable = true;
+    services.input-remapper.enable = true;
+
     systemd.services.scheduled-shutdown = {
       description = "Scheduled system shutdown";
       serviceConfig = {
@@ -470,14 +486,14 @@
       };
     };
 
-    systemd.timers.scheduled-shutdown = {
-      description = "Daily shutdown at 2am";
-      wantedBy = [ "timers.target" ];
-      timerConfig = {
-        OnCalendar = "*-*-* 04:00:00";
-        Persistent = true;
-      };
-    };
+    # systemd.timers.scheduled-shutdown = {
+    #   description = "Daily shutdown at 2am";
+    #   wantedBy = [ "timers.target" ];
+    #   timerConfig = {
+    #     OnCalendar = "*-*-* 04:00:00";
+    #     Persistent = true;
+    #   };
+    # };
 
     environment.pathsToLink = [ "/share/zsh" ];
 
