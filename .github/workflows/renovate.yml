@@ -17,6 +17,12 @@ jobs:
       # workflows: write
     steps:
       - uses: actions/checkout@v5
+
+      - uses: cachix/install-nix-action@v31
+        with:
+          extra_nix_config: |
+            experimental-features = nix-command flakes
+
       - uses: renovatebot/github-action@v46.1.5
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
