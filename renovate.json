@@ -11,7 +11,8 @@
   "packageRules": [
     {
       "matchManagers": ["nix"],
-      "commitMessagePrefix": "flake:"
+      "commitMessagePrefix": "flake:",
+      "branchName": "flake/{{{depName}}}"
     }
   ]
 }
