@@ -25,6 +25,7 @@ in
     dysk
     git-lfs
     neovim
+    kooha
     chromium
     evince
     vscodium
